@@ -19,12 +19,16 @@ module.exports = {
         Black: ['Roboto-Black'],
       },
       colors: {
-        primary: '#879DFF',
+        primaryC: '#879DFF',
         primaryDark: '#1F3CFE',
-        secondary: '#CBCBCB',
-        customWhite: '#FFFFFF',
-        selectionGreen: '#DEE2FF',
-        PrimaryHeading: '#3343AE',
+        secondaryC: '#CBCBCB',
+        whiteC: '#FFFFFF',
+        inputBorderColor: '#DEE2FF',
+        primaryHeading: '#3343AE',
+        backgroundC: '#F5F5F5',
+        grayC: '#BDBDBD',
+        blackC: '#000000',
+        
         
       },
     },
