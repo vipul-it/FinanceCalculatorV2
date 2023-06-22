@@ -19,6 +19,9 @@ import History from '../assets/images/History.png';
 import Car from '../assets/images/Car.png';
 import Profile from '../assets/images/Profile.png';
 import MoonProfile from '../assets/images/MoonProfile.png';
+import Bag from '../assets/images/Bag.png';
+import HomeIndicator from '../assets/images/HomeIndicator.png';
+import Share from '../assets/images/Share.png';
 
 
 export const allImages = {
@@ -42,5 +45,8 @@ export const allImages = {
   History: History,
   Car: Car,
   Profile: Profile,
+  Bag: Bag,
   MoonProfile: MoonProfile,
+  HomeIndicator: HomeIndicator,
+  Share: Share,
 };
