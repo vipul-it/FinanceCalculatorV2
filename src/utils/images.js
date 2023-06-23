@@ -22,6 +22,8 @@ import MoonProfile from '../assets/images/MoonProfile.png';
 import Bag from '../assets/images/Bag.png';
 import HomeIndicator from '../assets/images/HomeIndicator.png';
 import Share from '../assets/images/Share.png';
+import Delete from '../assets/images/Delete.png';
+import RightArrowButton from '../assets/images/RightArrowButton.png';
 
 
 export const allImages = {
@@ -49,4 +51,6 @@ export const allImages = {
   MoonProfile: MoonProfile,
   HomeIndicator: HomeIndicator,
   Share: Share,
+  RightArrowButton: RightArrowButton,
+  Delete: Delete,
 };

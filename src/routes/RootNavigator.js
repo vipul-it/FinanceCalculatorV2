@@ -16,6 +16,7 @@ import Emicalculator from '../screen/Emicalculator';
 import OtherCalculator from '../screen/OtherCalculator';
 import PrePayments from '../screen/PrePayments';
 import History from '../screen/History';
+import EmiHistory from '../screen/EmiHistory';
 
  const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,11 @@ const RootNavigator = () => {
         <Stack.Screen
           name="History"
           component={History}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="EmiHistory"
+          component={EmiHistory}
           options={{headerShown: false}}
         />
         
