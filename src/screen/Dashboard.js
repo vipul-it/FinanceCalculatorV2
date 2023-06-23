@@ -19,11 +19,14 @@ const Dashboard = () => {
       <View>
         <View className="box-content  h-48 w-full border-0 rounded-b-[40px] bg-primaryC px-5 py-2 flex-row items-center -mt-12">
           <TouchableOpacity>
-            <Image
+          <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('MenuBar');
+              }}><Image
               className="w-[23px] h-[16px] mr-4"
               source={allImages.Menu}
               alt="menu"
-            />
+            /></TouchableOpacity>
           </TouchableOpacity>
           <Text className="text-whiteC text-2xl font-bold">
             Finance Calculator
@@ -83,30 +86,50 @@ const Dashboard = () => {
         </View>
         <View className="mx-5  items-center">
           <View className="flex-row  ">
-            <Image
-              className="w-[160px] h-[140px]"
-              source={allImages.CompareLoan}
-              alt="card"
-            />
-            <Image
-              className="w-[160px] h-[140px]"
-              source={allImages.ChangeCurrency}
-              alt="card"
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('CompareLoan');
+              }}>
+              <Image
+                className="w-[160px] h-[140px]"
+                source={allImages.CompareLoan}
+                alt="card"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('ChangeCurrency');
+              }}>
+              <Image
+                className="w-[160px] h-[140px]"
+                source={allImages.ChangeCurrency}
+                alt="card"
+              />
+            </TouchableOpacity>
           </View>
         </View>
         <View className="mx-5  items-center">
           <View className="flex-row  ">
-            <Image
-              className="w-[160px] h-[140px]"
-              source={allImages.FindBank}
-              alt="card"
-            />
-            <Image
-              className="w-[160px] h-[140px]"
-              source={allImages.FindAtm}
-              alt="card"
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('FindBank');
+              }}>
+              <Image
+                className="w-[160px] h-[140px]"
+                source={allImages.FindBank}
+                alt="card"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('FindAtm');
+              }}>
+              <Image
+                className="w-[160px] h-[140px]"
+                source={allImages.FindAtm}
+                alt="card"
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>

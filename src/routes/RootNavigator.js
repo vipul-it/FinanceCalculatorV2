@@ -17,6 +17,11 @@ import OtherCalculator from '../screen/OtherCalculator';
 import PrePayments from '../screen/PrePayments';
 import History from '../screen/History';
 import EmiHistory from '../screen/EmiHistory';
+import CompareLoan from '../screen/CompareLoan';
+import ChangeCurrency from '../screen/ChangeCurrency';
+import FindBank from '../screen/FindBank';
+import FindAtm from '../screen/FindAtm';
+import MenuBar from '../screen/common/MenuBar';
 
  const Stack = createNativeStackNavigator();
 
@@ -59,6 +64,32 @@ const RootNavigator = () => {
           component={EmiHistory}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="CompareLoan"
+          component={CompareLoan}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ChangeCurrency"
+          component={ChangeCurrency}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="FindBank"
+          component={FindBank}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="FindAtm"
+          component={FindAtm}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="MenuBar"
+          component={MenuBar}
+          options={{headerShown: false}}
+        />
+        
         
       </Stack.Navigator>
     </NavigationContainer>

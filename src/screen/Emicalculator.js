@@ -17,6 +17,10 @@ import SubHeading from './common/SubHeading';
 import CalculateButton from './common/CalculateButton';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {dummyData} from './common/Daymeydata';
+import MyChart from './common/DoughnutChart';
+import DoughnutChart from './common/DoughnutChart';
+
+
 
 // Alert.alert(JSON.stringify(dummyData))
 
@@ -48,7 +52,8 @@ const Emicalculator = () => {
                 <TouchableOpacity
                   style={{
                     borderWidth: 1,
-                    borderColor: selectedcolor == item.id ? '#CBCBCB' : '#BDBDBD',
+                    borderColor:
+                      selectedcolor == item.id ? '#CBCBCB' : '#BDBDBD',
                     width: 100,
                     padding: 10,
                     alignSelf: 'center',
@@ -130,7 +135,7 @@ const Emicalculator = () => {
                   />
                   <View className="flex-row">
                     <Text className="text-blackC">Year</Text>
-                    <Text className="text-primaryDark">/</Text>
+                    <Text className="text-grayC">/</Text>
                     <Text className="text-grayC">Months</Text>
                   </View>
                 </View>
@@ -189,7 +194,7 @@ const Emicalculator = () => {
                   />
                   <View className="flex-row">
                     <Text className="text-blackC">Year</Text>
-                    <Text className="text-primaryDark">/</Text>
+                    <Text className="text-grayC">/</Text>
                     <Text className="text-grayC">Months</Text>
                   </View>
                 </View>
@@ -248,7 +253,7 @@ const Emicalculator = () => {
                   />
                   <View className="flex-row">
                     <Text className="text-blackC">Year</Text>
-                    <Text className="text-primaryDark">/</Text>
+                    <Text className="text-grayC">/</Text>
                     <Text className="text-grayC">Months</Text>
                   </View>
                 </View>
@@ -307,7 +312,7 @@ const Emicalculator = () => {
                   />
                   <View className="flex-row">
                     <Text className="text-blackC">Year</Text>
-                    <Text className="text-primaryDark">/</Text>
+                    <Text className="text-grayC">/</Text>
                     <Text className="text-grayC">Months</Text>
                   </View>
                 </View>
@@ -366,7 +371,7 @@ const Emicalculator = () => {
                   />
                   <View className="flex-row">
                     <Text className="text-blackC">Year</Text>
-                    <Text className="text-primaryDark">/</Text>
+                    <Text className="text-grayC">/</Text>
                     <Text className="text-grayC">Months</Text>
                   </View>
                 </View>
@@ -387,9 +392,8 @@ const Emicalculator = () => {
                 />
               </View>
             </View>
-          ) : selectedcolor == '5' ? (
-            <Text>sDS</Text>
-          ) : null}
+         ) : null}
+         
 
           <View>
             <View className="h-[400px] w-full rounded-t-[30px] bg-primaryC py-3">
@@ -434,6 +438,8 @@ const Emicalculator = () => {
                 </View>
               </View>
               <Text className="border-whiteC -mt-4 text-lg text-center border-b-[1px]"></Text>
+
+              <View className="flex items-center px-8"><DoughnutChart  /></View>
             </View>
           </View>
         </ScrollView>

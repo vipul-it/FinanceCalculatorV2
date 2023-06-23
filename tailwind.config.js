@@ -28,6 +28,7 @@ module.exports = {
         backgroundC: '#F5F5F5',
         grayC: '#BDBDBD',
         blackC: '#000000',
+        Cgray50: '#BFBFBF',
         
         
       },

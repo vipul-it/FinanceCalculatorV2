@@ -21,9 +21,13 @@ import Profile from '../assets/images/Profile.png';
 import MoonProfile from '../assets/images/MoonProfile.png';
 import Bag from '../assets/images/Bag.png';
 import HomeIndicator from '../assets/images/HomeIndicator.png';
-import Share from '../assets/images/Share.png';
 import Delete from '../assets/images/Delete.png';
 import RightArrowButton from '../assets/images/RightArrowButton.png';
+import MenuPageHome from '../assets/images/MenuPageHome.png';
+import Rate from '../assets/images/Rate.png';
+import Share from '../assets/images/Share.png';
+import Privacy from '../assets/images/Privacy.png';
+import Logo72 from '../assets/images/Logo72-72.png';
 
 
 export const allImages = {
@@ -50,7 +54,11 @@ export const allImages = {
   Bag: Bag,
   MoonProfile: MoonProfile,
   HomeIndicator: HomeIndicator,
-  Share: Share,
   RightArrowButton: RightArrowButton,
   Delete: Delete,
+  MenuPageHome: MenuPageHome,
+  Rate: Rate,
+  Share: Share,
+  Privacy: Privacy,
+  Logo72: Logo72,
 };
