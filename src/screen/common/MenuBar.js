@@ -52,7 +52,7 @@ const MenuBar = () => {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity className="flex-row  items-center px-5 h-16 border-b-[0.5px] border-Cgray50">
-        <Image className="w-[26px] h-[26px] mr-3" source={allImages.Share} />
+        <Image className="w-[26px] h-[26px] mr-3" source={allImages.ShareFill} />
         <Text className="text-primaryHeading text-[18px] text-center">
           Share App
         </Text>

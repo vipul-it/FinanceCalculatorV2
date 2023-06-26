@@ -25,9 +25,10 @@ import Delete from '../assets/images/Delete.png';
 import RightArrowButton from '../assets/images/RightArrowButton.png';
 import MenuPageHome from '../assets/images/MenuPageHome.png';
 import Rate from '../assets/images/Rate.png';
-import Share from '../assets/images/Share.png';
+import ShareFill from '../assets/images/Share.png';
 import Privacy from '../assets/images/Privacy.png';
 import Logo72 from '../assets/images/Logo72-72.png';
+import Share from '../assets/images/ShareFill.png';
 
 
 export const allImages = {
@@ -61,4 +62,5 @@ export const allImages = {
   Share: Share,
   Privacy: Privacy,
   Logo72: Logo72,
+  ShareFill: ShareFill,
 };

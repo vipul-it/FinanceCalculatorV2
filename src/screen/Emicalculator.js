@@ -396,7 +396,7 @@ const Emicalculator = () => {
          
 
           <View>
-            <View className="h-[400px] w-full rounded-t-[30px] bg-primaryC py-3">
+            <View className="h-[500px] w-full rounded-t-[30px] bg-primaryC py-3">
               <Image
                 className="w-[135px] h-[5px] self-center"
                 source={allImages.HomeIndicator}
@@ -405,7 +405,7 @@ const Emicalculator = () => {
               <Text className="text-whiteC text-2xl text-center">
                 &#8377; 1,00,000
               </Text>
-              <Text className="border-whiteC -mt-4 mb-2 text-2xl text-center border-b-[1px]"></Text>
+              <Text className="border-whiteC mb-4 -mt-4 text-2xl text-center border-b-[0.8px]"></Text>
               <View className="flex-row mr-2 justify-evenly">
                 <View>
                   <Text className="text-whiteC text-lg text-center">
@@ -437,9 +437,27 @@ const Emicalculator = () => {
                   <Text className="text-whiteC text-xl text-center">0.0</Text>
                 </View>
               </View>
-              <Text className="border-whiteC -mt-4 text-lg text-center border-b-[1px]"></Text>
+              <Text className="border-whiteC text-lg text-center border-b-[0.8px]"></Text>
 
-              <View className="flex items-center px-8"><DoughnutChart  /></View>
+              <View className="flex items-center px-8 py-4"><DoughnutChart  /></View>
+
+              <View className="flex-row justify-evenly my-6">
+                <CalculateButton
+                  name="Details"
+                  onPress={() => {
+                    navigation.navigate('EmiHistory');
+                  }}
+                  srcPath={allImages.Calculate}
+                />
+                
+                <CalculateButton
+                  name="Share"
+                  onPress={() => {
+                    navigation.navigate('EmiHistory');
+                  }}
+                  srcPath={allImages.Share}
+                />
+              </View>
             </View>
           </View>
         </ScrollView>

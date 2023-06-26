@@ -17,13 +17,13 @@ const Dashboard = () => {
     <SafeAreaView className="">
       <StatusBar backgroundColor="#879DFF" />
       <View>
-        <View className="box-content  h-48 w-full border-0 rounded-b-[40px] bg-primaryC px-5 py-2 flex-row items-center -mt-12">
+        <View className="box-content  h-48 w-full rounded-b-[40px] bg-primaryC px-5 py-2 flex-row items-center -mt-12">
           <TouchableOpacity>
           <TouchableOpacity
               onPress={() => {
                 navigation.navigate('MenuBar');
               }}><Image
-              className="w-[23px] h-[16px] mr-4"
+              className="w-[25px] h-[14px] mr-4"
               source={allImages.Menu}
               alt="menu"
             /></TouchableOpacity>
