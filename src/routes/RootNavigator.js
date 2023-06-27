@@ -22,6 +22,7 @@ import ChangeCurrency from '../screen/ChangeCurrency';
 import FindBank from '../screen/FindBank';
 import FindAtm from '../screen/FindAtm';
 import MenuBar from '../screen/common/MenuBar';
+import MyComponent from '../screen/MyComponent';
 
  const Stack = createNativeStackNavigator();
 
@@ -87,6 +88,11 @@ const RootNavigator = () => {
         <Stack.Screen
           name="MenuBar"
           component={MenuBar}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="MyComponent"
+          component={MyComponent}
           options={{headerShown: false}}
         />
         
