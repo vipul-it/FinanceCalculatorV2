@@ -9,7 +9,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CustomTopLayout from './common/CustomTopLayout';
 import {useNavigation} from '@react-navigation/native';
 import {allImages} from '../utils/images';
@@ -23,7 +23,6 @@ import EmiHistory from './EmiHistory';
 
 // Alert.alert(JSON.stringify(dummyData))
 
-
 const Emicalculator = () => {
   const navigation = useNavigation();
   const [amount, setAmount] = useState('');
@@ -35,25 +34,12 @@ const Emicalculator = () => {
   const [loanAmountPercentage, setLoanAmountPercentage] = useState(0);
   const [totalInterestPercentage, setTotalInterestPercentage] = useState(0);
 
-  const saveData = async () => {
-    try {
-      const data = {amount, interest, tenure};
-      const jsonValue = JSON.stringify(data);
-      await AsyncStorage.setItem('loanData', jsonValue);
-      console.log('Data saved successfully!');
-    } catch (error) {
-      console.log('Error saving data:', error);
-    }
-  };
-
   const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('loanData');
       const data = JSON.parse(jsonValue);
       if (data) {
-        setAmount(data.amount);
-        setInterest(data.interest);
-        setTenure(data.tenure);
+        console.log(data);
       }
     } catch (error) {
       console.log('Error retrieving data:', error);
@@ -84,14 +70,16 @@ const Emicalculator = () => {
     setMonthlyEMI('');
     setTotalInterest('');
     setTotalPayment('');
-    setLoanAmountPercentage('');
-    setTotalInterestPercentage('');
-    console.log('Data cleared successfully!');
+    setLoanAmountPercentage(0);
+    setTotalInterestPercentage(0);
+  };
+
+  const handleCalculateButton = () => {
+    calculateLoan();
+    saveData();
   };
 
   const calculateLoan = () => {
-    
-
     const loanAmount = parseFloat(amount);
     const loanInterest = parseFloat(interest) / 100;
     const loanTenure = parseFloat(tenure);
@@ -127,30 +115,47 @@ const Emicalculator = () => {
     setLoanAmountPercentage(loanAmountPercentage.toFixed(2));
     setTotalInterestPercentage(totalInterestPercentage.toFixed(2));
   };
+  const saveData = async () => {
+    try {
+      const data = {
+        amount,
+        interest,
+        tenure,
+        monthlyEMI,
+        totalInterest,
+        totalPayment,
+        loanAmountPercentage,
+        totalInterestPercentage,
+      };
+      const jsonValue = JSON.stringify(data);
+      await AsyncStorage.setItem('loanData', jsonValue);
+      console.log('Data saved successfully!');
+    } catch (error) {
+      console.log('Error saving data:', error);
+    }
+  };
 
   const [selectedcolor, setSelected] = useState(1);
-
 
   const principleAmount1 = 70; // Example value for principle amount
   const interestPercent1 = 30; // Example value for interest
 
-
-const data = [
-  {
-    name: 'Amount',
-    population: principleAmount1, // Percentage for principle amount
-    color: '#00107B',
-    legendFontColor: '#00107B',
-    legendFontSize: 15,
-  },
-  {
-    name: 'Interest',
-    population: interestPercent1, // Percentage for interest
-    color: '#1F3CFE',
-    legendFontColor: '#00107B',
-    legendFontSize: 15,
-  },
-];
+  const data = [
+    {
+      name: 'Amount',
+      population: principleAmount1, // Percentage for principle amount
+      color: '#00107B',
+      legendFontColor: '#00107B',
+      legendFontSize: 15,
+    },
+    {
+      name: 'Interest',
+      population: interestPercent1, // Percentage for interest
+      color: '#1F3CFE',
+      legendFontColor: '#00107B',
+      legendFontSize: 15,
+    },
+  ];
   return (
     <>
       <SafeAreaView className="bg-backgroundC flex-1">
@@ -442,7 +447,7 @@ const data = [
           <View className="flex-row justify-evenly my-12">
             <CalculateButton
               name="Calculate"
-              onPress={calculateLoan}
+              onPress={handleCalculateButton}
               srcPath={allImages.Calculate}
             />
             <CalculateButton
@@ -516,24 +521,20 @@ const data = [
               <Text>Loan Amount (%): {loanAmountPercentage}</Text>
               <Text>Total Interest (%): {totalInterestPercentage}</Text> */}
               <View className="flex items-center  py-4">
-                <DoughnutChart
-                  data={data}
-                />
+                <DoughnutChart data={data} />
               </View>
 
               <View className="flex-row justify-evenly my-6">
                 <CalculateButton
                   name="Details"
-                  onPress={() => {
-                    navigation.navigate('EmiHistory');
-                  }}
+                  onPress={getData}
                   srcPath={allImages.Calculate}
                 />
 
                 <CalculateButton
                   name="Share"
                   onPress={() => {
-                    navigation.navigate('EmiHistory');
+                    navigation.navigate('EmiDetails');
                   }}
                   srcPath={allImages.Share}
                 />

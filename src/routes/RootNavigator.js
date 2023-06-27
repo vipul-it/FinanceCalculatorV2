@@ -23,6 +23,7 @@ import FindBank from '../screen/FindBank';
 import FindAtm from '../screen/FindAtm';
 import MenuBar from '../screen/common/MenuBar';
 import MyComponent from '../screen/MyComponent';
+import EmiDetails from '../screen/EmiDetails';
 
  const Stack = createNativeStackNavigator();
 
@@ -93,6 +94,11 @@ const RootNavigator = () => {
         <Stack.Screen
           name="MyComponent"
           component={MyComponent}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="EmiDetails"
+          component={EmiDetails}
           options={{headerShown: false}}
         />
         
