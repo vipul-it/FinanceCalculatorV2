@@ -8,6 +8,7 @@ import {
   Alert,
   FlatList,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import CustomTopLayout from './common/CustomTopLayout';
@@ -21,10 +22,24 @@ import DoughnutChart from './common/DoughnutChart';
 
 import EmiHistory from './EmiHistory';
 
+import SQLite from 'react-native-sqlite-storage';
+
+const db = SQLite.openDatabase('mydb.db');
+
 // Alert.alert(JSON.stringify(dummyData))
 
 const Emicalculator = () => {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    // Create the table if it doesn't exist
+    db.transaction(tx => {
+      tx.executeSql(
+        'CREATE TABLE IF NOT EXISTS LoanData (id INTEGER PRIMARY KEY AUTOINCREMENT, amount REAL, interest REAL, tenure INTEGER, monthlyEMI REAL, totalInterest REAL, totalPayment REAL, loanAmountPercentage REAL, totalInterestPercentage REAL)',
+        [],
+      );
+    });
+  }, []);
 
   const [amount, setAmount] = useState('');
   const [interest, setInterest] = useState('');
@@ -44,10 +59,6 @@ const Emicalculator = () => {
     setTotalPayment('');
     setLoanAmountPercentage(0);
     setTotalInterestPercentage(0);
-  };
-
-  const handleCalculateButton = () => {
-    calculateLoan();
   };
 
   const calculateLoan = () => {
@@ -108,6 +119,48 @@ const Emicalculator = () => {
       legendFontSize: 15,
     },
   ];
+
+  const handleCalculateButton = () => {
+    calculateLoan();
+    insertData();
+  };
+  console.log(amount);
+  console.log(totalInterestPercentage);
+
+  const insertData = () => {
+    // const amount = amount;
+    // const interest = interest;
+    // const tenure = tenure;
+    // const monthlyEMI = monthlyEMI;
+    // const totalInterest = totalInterest;
+    // const totalPayment = totalPayment;
+    // const loanAmountPercentage = loanAmountPercentage;
+    // const totalInterestPercentage = totalInterestPercentage;
+
+    db.transaction(tx => {
+      tx.executeSql(
+        'INSERT INTO LoanData (amount, interest, tenure, monthlyEMI, totalInterest, totalPayment, loanAmountPercentage, totalInterestPercentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        [
+          amount,
+          interest,
+          tenure,
+          monthlyEMI,
+          totalInterest,
+          totalPayment,
+          loanAmountPercentage,
+          totalInterestPercentage,
+        ],
+        (_, result) => {
+          if (result.insertId !== undefined) {
+            Alert.alert('Success', 'Data inserted successfully!');
+            fetchData();
+          } else {
+            Alert.alert('Error', 'Failed to insert data!');
+          }
+        },
+      );
+    });
+  };
   return (
     <>
       <SafeAreaView className="bg-backgroundC flex-1">
@@ -466,14 +519,13 @@ const Emicalculator = () => {
               </View>
               <Text className="border-whiteC text-lg text-center border-b-[0.8px]"></Text>
 
-             
-
               <Text className="my-2 mx-3">
                 Loan Amount (%): {loanAmountPercentage}
               </Text>
               <Text className="my-2 mx-3">
                 Total Interest (%): {totalInterestPercentage}
               </Text>
+
               <View className="flex items-center  py-4">
                 <DoughnutChart chartData={chartData} />
               </View>

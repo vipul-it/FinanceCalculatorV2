@@ -21,7 +21,7 @@ const TopTwoIcon = ({name, onPressRight, onPressLeft}) => {
           <View className="">
             <TouchableOpacity onPress={onPressRight} className="p-5">
               <Image
-                className="w-[14px] h-[16px]"
+                className="w-[14px] h-[18px]"
                 source={allImages.Delete}
               />
             </TouchableOpacity>
