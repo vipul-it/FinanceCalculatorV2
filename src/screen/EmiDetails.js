@@ -29,6 +29,27 @@ const EmiDetails = () => {
       interest: 83,
       Balance: 16701,
     },
+    {
+      id: 4,
+      month: 4,
+      pricipal: 3288,
+      interest: 83,
+      Balance: 16701,
+    },
+    {
+      id: 5,
+      month: 5,
+      pricipal: 3288,
+      interest: 83,
+      Balance: 16701,
+    },
+    {
+      id: 6,
+      month: 6,
+      pricipal: 3288,
+      interest: 83,
+      Balance: 16701,
+    },
   ];
 
   const renderRow = ({item}) => (

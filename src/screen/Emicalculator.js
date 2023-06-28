@@ -228,7 +228,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={amount}
                     onChangeText={text => setAmount(text)}
                     placeholder="eg. 100000"
@@ -240,7 +240,7 @@ const Emicalculator = () => {
               <SubHeading name="Intrest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
-                  className="w-full"
+                  className="w-full text-blackC"
                   value={interest}
                   onChangeText={text => setInterest(text)}
                   placeholder="eg. 8"
@@ -252,7 +252,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={tenure}
                     onChangeText={text => setTenure(text)}
                     placeholder="eg. 5"
@@ -272,7 +272,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={amount}
                     onChangeText={text => setAmount(text)}
                     placeholder="eg. 100000"
@@ -284,7 +284,7 @@ const Emicalculator = () => {
               <SubHeading name="Intrest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
-                  className="w-full"
+                  className="w-full text-blackC"
                   value={interest}
                   onChangeText={text => setInterest(text)}
                   placeholder="eg. 8"
@@ -296,7 +296,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={tenure}
                     onChangeText={text => setTenure(text)}
                     placeholder="eg. 5"
@@ -316,7 +316,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={amount}
                     onChangeText={text => setAmount(text)}
                     placeholder="eg. 100000"
@@ -328,7 +328,7 @@ const Emicalculator = () => {
               <SubHeading name="Intrest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
-                  className="w-full"
+                  className="w-full text-blackC"
                   value={interest}
                   onChangeText={text => setInterest(text)}
                   placeholder="eg. 8"
@@ -340,7 +340,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={tenure}
                     onChangeText={text => setTenure(text)}
                     placeholder="eg. 5"
@@ -360,7 +360,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={amount}
                     onChangeText={text => setAmount(text)}
                     placeholder="eg. 100000"
@@ -372,7 +372,7 @@ const Emicalculator = () => {
               <SubHeading name="Intrest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
-                  className="w-full"
+                  className="w-full text-blackC"
                   value={interest}
                   onChangeText={text => setInterest(text)}
                   placeholder="eg. 8"
@@ -384,7 +384,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={tenure}
                     onChangeText={text => setTenure(text)}
                     placeholder="eg. 5"
@@ -404,7 +404,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={amount}
                     onChangeText={text => setAmount(text)}
                     placeholder="eg. 100000"
@@ -416,7 +416,7 @@ const Emicalculator = () => {
               <SubHeading name="Intrest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
-                  className="w-full"
+                  className="w-full text-blackC"
                   value={interest}
                   onChangeText={text => setInterest(text)}
                   placeholder="eg. 8"
@@ -428,7 +428,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
                   <TextInput
-                    className="w-full"
+                    className="w-full text-blackC"
                     value={tenure}
                     onChangeText={text => setTenure(text)}
                     placeholder="eg. 5"
@@ -517,9 +517,9 @@ const Emicalculator = () => {
               {/* <Text>Monthly EMI: {monthlyEMI}</Text>
               <Text>Total Interest: {totalInterest}</Text>
               <Text>Total Payment: {totalPayment}</Text>
-              <Text>Loan Amount: {amount}</Text>
+              <Text>Loan Amount: {amount}</Text> */}
               <Text>Loan Amount (%): {loanAmountPercentage}</Text>
-              <Text>Total Interest (%): {totalInterestPercentage}</Text> */}
+              <Text>Total Interest (%): {totalInterestPercentage}</Text>
               <View className="flex items-center  py-4">
                 <DoughnutChart data={data} />
               </View>
@@ -527,15 +527,15 @@ const Emicalculator = () => {
               <View className="flex-row justify-evenly my-6">
                 <CalculateButton
                   name="Details"
-                  onPress={getData}
+                  onPress={() => {
+                    navigation.navigate('EmiDetails');
+                  }}
                   srcPath={allImages.Calculate}
                 />
 
                 <CalculateButton
                   name="Share"
-                  onPress={() => {
-                    navigation.navigate('EmiDetails');
-                  }}
+                  
                   srcPath={allImages.Share}
                 />
               </View>

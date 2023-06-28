@@ -8,7 +8,7 @@ const TopTwoIcon = ({name, onPressRight, onPressLeft}) => {
       <View className="h-20 w-full border-0 rounded-b-[70px] bg-primaryC px-5 py-4">
         <View className="flex-row items-center justify-between">
           <View className="">
-            <TouchableOpacity onPress={onPressRight} className="p-5">
+            <TouchableOpacity onPress={onPressLeft} className="p-5">
               <Image
                 className="w-[14px] h-[16px]"
                 source={allImages.BackLeftArrow}
@@ -19,7 +19,7 @@ const TopTwoIcon = ({name, onPressRight, onPressLeft}) => {
             <Text className="text-whiteC text-2xl font-bold ">{name}</Text>
           </View>
           <View className="">
-            <TouchableOpacity onPress={onPressLeft} className="p-5">
+            <TouchableOpacity onPress={onPressRight} className="p-5">
               <Image
                 className="w-[14px] h-[16px]"
                 source={allImages.Delete}
