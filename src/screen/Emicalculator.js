@@ -18,13 +18,14 @@ import CalculateButton from './common/CalculateButton';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {dummyData} from './common/Daymeydata';
 import DoughnutChart from './common/DoughnutChart';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import EmiHistory from './EmiHistory';
 
 // Alert.alert(JSON.stringify(dummyData))
 
 const Emicalculator = () => {
   const navigation = useNavigation();
+
   const [amount, setAmount] = useState('');
   const [interest, setInterest] = useState('');
   const [tenure, setTenure] = useState('');
@@ -33,35 +34,6 @@ const Emicalculator = () => {
   const [totalPayment, setTotalPayment] = useState('');
   const [loanAmountPercentage, setLoanAmountPercentage] = useState(0);
   const [totalInterestPercentage, setTotalInterestPercentage] = useState(0);
-
-  const getData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('loanData');
-      const data = JSON.parse(jsonValue);
-      if (data) {
-        console.log(data);
-      }
-    } catch (error) {
-      console.log('Error retrieving data:', error);
-    }
-  };
-
-  const clearData = async () => {
-    try {
-      await AsyncStorage.removeItem('loanData');
-      setAmount('');
-      setInterest('');
-      setTenure('');
-      setMonthlyEMI('');
-      setTotalInterest('');
-      setTotalPayment('');
-      setLoanAmountPercentage('');
-      setTotalInterestPercentage('');
-      console.log('Data cleared successfully!');
-    } catch (error) {
-      console.log('Error clearing data:', error);
-    }
-  };
 
   const resetData = () => {
     setAmount('');
@@ -76,7 +48,6 @@ const Emicalculator = () => {
 
   const handleCalculateButton = () => {
     calculateLoan();
-    saveData();
   };
 
   const calculateLoan = () => {
@@ -115,32 +86,13 @@ const Emicalculator = () => {
     setLoanAmountPercentage(loanAmountPercentage.toFixed(2));
     setTotalInterestPercentage(totalInterestPercentage.toFixed(2));
   };
-  const saveData = async () => {
-    try {
-      const data = {
-        amount,
-        interest,
-        tenure,
-        monthlyEMI,
-        totalInterest,
-        totalPayment,
-        loanAmountPercentage,
-        totalInterestPercentage,
-      };
-      const jsonValue = JSON.stringify(data);
-      await AsyncStorage.setItem('loanData', jsonValue);
-      console.log('Data saved successfully!');
-    } catch (error) {
-      console.log('Error saving data:', error);
-    }
-  };
 
   const [selectedcolor, setSelected] = useState(1);
 
   const principleAmount1 = 70; // Example value for principle amount
   const interestPercent1 = 30; // Example value for interest
 
-  const data = [
+  const chartData = [
     {
       name: 'Amount',
       population: principleAmount1, // Percentage for principle amount
@@ -514,14 +466,16 @@ const Emicalculator = () => {
               </View>
               <Text className="border-whiteC text-lg text-center border-b-[0.8px]"></Text>
 
-              {/* <Text>Monthly EMI: {monthlyEMI}</Text>
-              <Text>Total Interest: {totalInterest}</Text>
-              <Text>Total Payment: {totalPayment}</Text>
-              <Text>Loan Amount: {amount}</Text> */}
-              <Text>Loan Amount (%): {loanAmountPercentage}</Text>
-              <Text>Total Interest (%): {totalInterestPercentage}</Text>
+             
+
+              <Text className="my-2 mx-3">
+                Loan Amount (%): {loanAmountPercentage}
+              </Text>
+              <Text className="my-2 mx-3">
+                Total Interest (%): {totalInterestPercentage}
+              </Text>
               <View className="flex items-center  py-4">
-                <DoughnutChart data={data} />
+                <DoughnutChart chartData={chartData} />
               </View>
 
               <View className="flex-row justify-evenly my-6">
@@ -533,11 +487,7 @@ const Emicalculator = () => {
                   srcPath={allImages.Calculate}
                 />
 
-                <CalculateButton
-                  name="Share"
-                  
-                  srcPath={allImages.Share}
-                />
+                <CalculateButton name="Share" srcPath={allImages.Share} />
               </View>
             </View>
           </View>

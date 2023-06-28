@@ -2,13 +2,13 @@ import React from 'react';
 import {View} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 
-const DoughnutChart = ({data}) => {
+const DoughnutChart = ({chartData}) => {
   
 
   return (
     <View>
       <PieChart
-        data={data}
+        data={chartData}
         width={400}
         height={150}
         chartConfig={{
