@@ -33,6 +33,8 @@ const EmiHistory = () => {
 
   const [data, setData] = useState([]);
 
+  // alert(JSON.stringify(data))
+
   const deleteRecord = id => {
     db.transaction(tx => {
       tx.executeSql('DELETE FROM LoanData WHERE id = ?', [id], (_, result) => {
@@ -95,6 +97,7 @@ const EmiHistory = () => {
         <ScrollView>
           <View style={{flex: 1}}>
             {data.map(item => (
+              
               <View key={item.id}>
                 {/* <Text>Amount: {item.amount}</Text>
                   <Text>Interest: {item.interest}</Text>
@@ -131,10 +134,16 @@ const EmiHistory = () => {
                     </View>
                   </View>
                   <View>
+                    <TouchableOpacity 
+                    onPress={() =>{
+                      navigation.navigate('EmiDetails',{mydata:item})
+                    }}
+                    >
                     <Image
                       className="w-6 h-6"
                       source={allImages.RightArrowButton}
                     />
+                    </TouchableOpacity>
                   </View>
                 </View>
               </View>

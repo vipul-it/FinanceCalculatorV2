@@ -5,16 +5,20 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import CalculateButton from './common/CalculateButton';
 import {allImages} from '../utils/images';
 
-const EmiDetails = () => {
-  const navigation = useNavigation();
-
+const Detilsshowemi = () => {
   const route = useRoute();
 
-  const {mydata} = route.params;
+  const {montly, total, loan, monts, intrest, totalintrest} = route.params;
 
-  // Alert.alert(JSON.stringify(mydata));
+  const navigation = useNavigation();
 
-  // console.log('gdjfdsHDGSASDHgas', mydata);
+  // const route = useRoute();
+
+  // const { mydata } = route.params;
+
+  // Alert.alert(JSON.stringify(mydata))
+
+  // console.log('gdjfdsHDGSASDHgas',mydata)
 
   const data = [
     {
@@ -102,38 +106,32 @@ const EmiDetails = () => {
           {/* Table Rows */}
           <View className="flex-row justify-between  border-t-[1px]  border-primaryHeading ">
             <View className="border-r-[1px] border-primaryHeading justify-center items-center flex p-2">
-              <Text className="text-primaryHeading ">
-                &#8377; {mydata?.amount}
-              </Text>
-              
+              <Text className="text-primaryHeading ">&#8377; {montly}</Text>
+              {/*  montly,total,loan,monts,intrest,totalintrest */}
               <Text className="text-gray-700">Monthly EMI</Text>
             </View>
             <View className="border-r-[1px] border-primaryHeading justify-center items-center flex p-2">
               <Text className="text-primaryHeading ">
-                &#8377; {mydata?.totalInterest}
+                &#8377; {totalintrest}
               </Text>
               <Text className="text-gray-700">Total Interest</Text>
             </View>
             <View className=" justify-center items-center flex p-2">
-              <Text className="text-primaryHeading ">
-                &#8377; {mydata?.amount}
-              </Text>
+              <Text className="text-primaryHeading ">&#8377; {loan}</Text>
               <Text className="text-gray-700">Loan Amount</Text>
             </View>
           </View>
           <View className="flex-row justify-between  border-t-[1px]  border-primaryHeading ">
             <View className="border-r-[1px] border-primaryHeading justify-center items-center flex p-2">
-              <Text className="text-primaryHeading ">{mydata?.tenure}</Text>
+              <Text className="text-primaryHeading ">{monts}</Text>
               <Text className="text-gray-700">Months</Text>
             </View>
             <View className="border-r-[1px] border-primaryHeading justify-center items-center flex p-2">
-              <Text className="text-primaryHeading ">{mydata?.interest}%</Text>
+              <Text className="text-primaryHeading ">{intrest}</Text>
               <Text className="text-gray-700">Interest Rate</Text>
             </View>
             <View className=" justify-center items-center flex p-2 ">
-              <Text className="text-primaryHeading ">
-                &#8377; {mydata?.totalPayment}
-              </Text>
+              <Text className="text-primaryHeading ">&#8377; {total}</Text>
               <Text className="text-gray-700">Total Payment</Text>
             </View>
           </View>
@@ -170,4 +168,4 @@ const EmiDetails = () => {
   );
 };
 
-export default EmiDetails;
+export default Detilsshowemi;

@@ -24,6 +24,9 @@ import FindAtm from '../screen/FindAtm';
 import MenuBar from '../screen/common/MenuBar';
 import MyComponent from '../screen/MyComponent';
 import EmiDetails from '../screen/EmiDetails';
+import Detilsshowemi from '../screen/Detilsshowemi';
+
+
 
  const Stack = createNativeStackNavigator();
 
@@ -101,7 +104,12 @@ const RootNavigator = () => {
           component={EmiDetails}
           options={{headerShown: false}}
         />
-        
+         <Stack.Screen
+          name="Detilsshowemi"
+          component={Detilsshowemi}
+          options={{headerShown: false}}
+        />
+      
         
       </Stack.Navigator>
     </NavigationContainer>

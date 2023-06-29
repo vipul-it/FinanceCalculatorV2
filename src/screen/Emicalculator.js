@@ -47,8 +47,8 @@ const Emicalculator = () => {
   const [monthlyEMI, setMonthlyEMI] = useState('');
   const [totalInterest, setTotalInterest] = useState('');
   const [totalPayment, setTotalPayment] = useState('');
-  const [loanAmountPercentage, setLoanAmountPercentage] = useState(0);
-  const [totalInterestPercentage, setTotalInterestPercentage] = useState(0);
+  const [loanAmountPercentage, setLoanAmountPercentage] = useState('');
+  const [totalInterestPercentage, setTotalInterestPercentage] = useState('');
 
   const resetData = () => {
     setAmount('');
@@ -98,28 +98,6 @@ const Emicalculator = () => {
     setTotalInterestPercentage(totalInterestPercentage.toFixed(2));
   };
 
-  const [selectedcolor, setSelected] = useState(1);
-
-  const principleAmount1 = 70; // Example value for principle amount
-  const interestPercent1 = 30; // Example value for interest
-
-  const chartData = [
-    {
-      name: 'Amount',
-      population: principleAmount1, // Percentage for principle amount
-      color: '#00107B',
-      legendFontColor: '#00107B',
-      legendFontSize: 15,
-    },
-    {
-      name: 'Interest',
-      population: interestPercent1, // Percentage for interest
-      color: '#1F3CFE',
-      legendFontColor: '#00107B',
-      legendFontSize: 15,
-    },
-  ];
-
   const handleCalculateButton = () => {
     calculateLoan();
     insertData();
@@ -161,6 +139,29 @@ const Emicalculator = () => {
       );
     });
   };
+
+  const [selectedcolor, setSelected] = useState(1);
+
+  const principleAmount1 = loanAmountPercentage * 1; // Example value for principle amount
+  const interestPercent1 = totalInterestPercentage * 1; // Example value for interest
+
+  const chartData = [
+    {
+      name: 'Amount',
+      population: principleAmount1, // Percentage for principle amount
+      color: '#00107B',
+      legendFontColor: '#00107B',
+      legendFontSize: 15,
+    },
+    {
+      name: 'Interest',
+      population: interestPercent1, // Percentage for interest
+      color: '#1F3CFE',
+      legendFontColor: '#00107B',
+      legendFontSize: 15,
+    },
+  ];
+
   return (
     <>
       <SafeAreaView className="bg-backgroundC flex-1">
@@ -519,13 +520,6 @@ const Emicalculator = () => {
               </View>
               <Text className="border-whiteC text-lg text-center border-b-[0.8px]"></Text>
 
-              <Text className="my-2 mx-3">
-                Loan Amount (%): {loanAmountPercentage}
-              </Text>
-              <Text className="my-2 mx-3">
-                Total Interest (%): {totalInterestPercentage}
-              </Text>
-
               <View className="flex items-center  py-4">
                 <DoughnutChart chartData={chartData} />
               </View>
@@ -534,7 +528,14 @@ const Emicalculator = () => {
                 <CalculateButton
                   name="Details"
                   onPress={() => {
-                    navigation.navigate('EmiDetails');
+                    navigation.navigate('Detilsshowemi', {
+                      montly: monthlyEMI,
+                      total: totalPayment,
+                      loan: amount,
+                      monts: tenure,
+                      intrest: interest,
+                      totalintrest: totalInterest,
+                    });
                   }}
                   srcPath={allImages.Calculate}
                 />
