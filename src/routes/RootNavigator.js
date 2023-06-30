@@ -32,6 +32,7 @@ import FdCalculator from '../screen/otherCalculator/FdCalculator';
 import RdCalculator from '../screen/otherCalculator/RdCalculator';
 import SipCalculator from '../screen/otherCalculator/SipCalculator';
 import TipHistory from '../screen/otherCalculator/TipHistory';
+import DiscountHistory from '../screen/otherCalculator/DiscountHistory';
 
 const Stack = createNativeStackNavigator();
 
@@ -147,6 +148,11 @@ const RootNavigator = () => {
         <Stack.Screen
           name="TipHistory"
           component={TipHistory}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="DiscountHistory"
+          component={DiscountHistory}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

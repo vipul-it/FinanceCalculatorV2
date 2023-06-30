@@ -9,6 +9,7 @@ import {
   FlatList,
   TouchableOpacity,
   Button,
+  Keyboard,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import CustomTopLayout from './common/CustomTopLayout';
@@ -62,6 +63,9 @@ const Emicalculator = () => {
   };
 
   const calculateLoan = () => {
+     // Hide the keyboard
+     Keyboard.dismiss();
+
     const loanAmount = parseFloat(amount);
     const loanInterest = parseFloat(interest) / 100;
     const loanTenure = parseFloat(tenure);
