@@ -30,6 +30,14 @@ import Privacy from '../assets/images/Privacy.png';
 import Logo72 from '../assets/images/Logo72-72.png';
 import Share from '../assets/images/ShareFill.png';
 
+import Tip from '../assets/images/Tip.png';
+import Interest from '../assets/images/Interest.png';
+import Discount from '../assets/images/Discount.png';
+import FD from '../assets/images/FD.png';
+import SIP from '../assets/images/SIP.png';
+import RD from '../assets/images/RD.png';
+
+
 
 export const allImages = {
   Menu: Menu,
@@ -63,4 +71,10 @@ export const allImages = {
   Privacy: Privacy,
   Logo72: Logo72,
   ShareFill: ShareFill,
+  Tip: Tip,
+  Interest: Interest,
+  Discount: Discount,
+  FD: FD,
+  SIP: SIP,
+  RD: RD,
 };

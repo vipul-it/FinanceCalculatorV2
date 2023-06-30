@@ -94,10 +94,9 @@ const EmiHistory = () => {
       />
       <Text className="py-1"></Text>
       <View className="">
-        <ScrollView>
+        <ScrollView className="mb-28">
           <View style={{flex: 1}}>
             {data.map(item => (
-              
               <View key={item.id}>
                 {/* <Text>Amount: {item.amount}</Text>
                   <Text>Interest: {item.interest}</Text>
@@ -125,8 +124,8 @@ const EmiHistory = () => {
 
                     <View>
                       <Text className="text-primaryHeading font-semibold ">
-                      &#8377; {item.amount} with {item.interest}% for {item.tenure}{' '}
-                        months
+                        &#8377; {item.amount} with {item.interest}% for{' '}
+                        {item.tenure} months
                       </Text>
                       <Text className="text-primaryDark font-semibold">
                         7 June 2023, 03:07 pm
@@ -134,15 +133,14 @@ const EmiHistory = () => {
                     </View>
                   </View>
                   <View>
-                    <TouchableOpacity 
-                    onPress={() =>{
-                      navigation.navigate('EmiDetails',{mydata:item})
-                    }}
-                    >
-                    <Image
-                      className="w-6 h-6"
-                      source={allImages.RightArrowButton}
-                    />
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate('EmiDetails', {mydata: item});
+                      }}>
+                      <Image
+                        className="w-6 h-6"
+                        source={allImages.RightArrowButton}
+                      />
                     </TouchableOpacity>
                   </View>
                 </View>

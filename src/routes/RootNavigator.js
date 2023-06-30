@@ -25,10 +25,15 @@ import MenuBar from '../screen/common/MenuBar';
 import MyComponent from '../screen/MyComponent';
 import EmiDetails from '../screen/EmiDetails';
 import Detilsshowemi from '../screen/Detilsshowemi';
+import TipCalculator from '../screen/otherCalculator/TipCalculator';
+import InterestCalculator from '../screen/otherCalculator/InterestCalculator';
+import DiscountCalculator from '../screen/otherCalculator/DiscountCalculator';
+import FdCalculator from '../screen/otherCalculator/FdCalculator';
+import RdCalculator from '../screen/otherCalculator/RdCalculator';
+import SipCalculator from '../screen/otherCalculator/SipCalculator';
+import TipHistory from '../screen/otherCalculator/TipHistory';
 
-
-
- const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
@@ -44,7 +49,7 @@ const RootNavigator = () => {
           component={Dashboard}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Emicalculator"
           component={Emicalculator}
           options={{headerShown: false}}
@@ -64,7 +69,7 @@ const RootNavigator = () => {
           component={History}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="EmiHistory"
           component={EmiHistory}
           options={{headerShown: false}}
@@ -104,17 +109,48 @@ const RootNavigator = () => {
           component={EmiDetails}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Detilsshowemi"
           component={Detilsshowemi}
           options={{headerShown: false}}
         />
-      
-        
+        <Stack.Screen
+          name="TipCalculator"
+          component={TipCalculator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="InterestCalculator"
+          component={InterestCalculator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DiscountCalculator"
+          component={DiscountCalculator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="FdCalculator"
+          component={FdCalculator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SipCalculator"
+          component={SipCalculator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RdCalculator"
+          component={RdCalculator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="TipHistory"
+          component={TipHistory}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
-
-    
   );
 };
 
