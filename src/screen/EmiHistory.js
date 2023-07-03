@@ -78,7 +78,9 @@ const EmiHistory = () => {
 
   useEffect(() => {
     fetchData();
+
   }, []);
+  console.log(JSON.stringify(data));
 
   const showAlert = () => {
     Alert.alert('Alert', 'History Clear.');
@@ -110,6 +112,7 @@ const EmiHistory = () => {
                   <Text>
                     Total Interest Percentage: {item.totalInterestPercentage}
                   </Text> */}
+                  
                 <View className="flex-row border-[1px] border-Cgray50 justify-between mx-5 items-center rounded-lg p-4 my-2">
                   <View className="flex-row  items-center">
                     <TouchableOpacity

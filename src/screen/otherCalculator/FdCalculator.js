@@ -166,7 +166,7 @@ const FdCalculator = () => {
           </View>
         </View>
 
-        <View className="h-[110px] w-full rounded-t-[30px] bg-primaryC py-3">
+        <View className="h-[150px] w-full rounded-t-[30px] bg-primaryC py-3">
           <Image
             className="w-[135px] h-[5px] self-center mb-6"
             source={allImages.HomeIndicator}

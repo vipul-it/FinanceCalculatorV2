@@ -167,32 +167,32 @@ const TipCalculator = () => {
             className="w-[135px] h-[5px] self-center mb-6"
             source={allImages.HomeIndicator}
           />
-          <View className="flex-row justify-between mx-10">
+          <View className="flex-row justify-between items-center mx-10 ">
             <Text className="text-whiteC pt-2 text-lg ">Tip</Text>
             <Text className="text-primaryHeading text-lg ">
               &#8377; {tipAmount}
             </Text>
           </View>
-          <View className="flex-row justify-between mx-10">
+          <View className="flex-row justify-between items-center mx-10">
             <Text className="text-whiteC pt-2 text-lg ">Per Person Bill</Text>
             <Text className="text-primaryHeading text-lg ">
               &#8377; {perPersonBill}
             </Text>
           </View>
-          <View className="flex-row justify-between mx-10">
+          <View className="flex-row justify-between items-center mx-10">
             <Text className="text-whiteC pt-2 text-lg ">Bill Amount</Text>
             <Text className="text-primaryHeading text-lg ">
               &#8377; {billAmount}
             </Text>
           </View>
-          <View className="flex-row justify-between mx-10">
+          <View className="flex-row justify-between items-center mx-10">
             <Text className="text-whiteC pt-2 text-lg ">Total Bill</Text>
             <Text className="text-primaryHeading text-lg ">
               &#8377; {totalBill}
             </Text>
           </View>
 
-          {/* <Text className="border-whiteC text-lg text-center border-b-[0.8px]"></Text> */}
+          
         </View>
       </ScrollView>
     </View>

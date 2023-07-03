@@ -36,7 +36,7 @@ const Emicalculator = () => {
     // Create the table if it doesn't exist
     db.transaction(tx => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS LoanData (id INTEGER PRIMARY KEY AUTOINCREMENT, amount REAL, interest REAL, tenure INTEGER, monthlyEMI REAL, totalInterest REAL, totalPayment REAL, loanAmountPercentage REAL, totalInterestPercentage REAL)',
+        'CREATE TABLE IF NOT EXISTS LoanData (id INTEGER PRIMARY KEY AUTOINCREMENT, amount REAL, interest REAL, tenure INTEGER, monthlyEMI REAL, totalInterest REAL, totalPayment REAL, loanAmountPercentage REAL, totalInterestPercentage REAL, date_column TEXT)',
         [],
       );
     });
@@ -108,6 +108,13 @@ const Emicalculator = () => {
   };
   console.log(amount);
   console.log(totalInterestPercentage);
+  
+
+  // Insert the date in text format
+  const date = '2023-07-02'; // Format: YYYY-MM-DD
+
+  console.log(JSON.stringify(date));
+
 
   const insertData = () => {
     // const amount = amount;
@@ -121,7 +128,7 @@ const Emicalculator = () => {
 
     db.transaction(tx => {
       tx.executeSql(
-        'INSERT INTO LoanData (amount, interest, tenure, monthlyEMI, totalInterest, totalPayment, loanAmountPercentage, totalInterestPercentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO LoanData (amount, interest, tenure, monthlyEMI, totalInterest, totalPayment, loanAmountPercentage, totalInterestPercentage, date_column) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
         [
           amount,
           interest,
@@ -131,6 +138,8 @@ const Emicalculator = () => {
           totalPayment,
           loanAmountPercentage,
           totalInterestPercentage,
+          date
+          
         ],
         (_, result) => {
           if (result.insertId !== undefined) {
@@ -366,7 +375,7 @@ const Emicalculator = () => {
             </View>
           ) : selectedcolor == '4' ? (
             <View className="mx-5">
-              <SubHeading name="Buisiness Loan Amount" />
+              <SubHeading name="Business Loan Amount" />
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
