@@ -84,7 +84,7 @@ const Detilsshowemi = () => {
   return (
     <View className="flex-1">
       <CustomTopLayout
-        name="Details"
+        name="EMI Details"
         onPress={() => {
           navigation.goBack();
         }}

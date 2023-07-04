@@ -110,7 +110,7 @@ const RdCalculator = () => {
             <Text className="text-blackC">Months</Text>
           </View> */}
 
-          <View className="flex-row justify-between my-12">
+          <View className="flex-row justify-evenly my-12">
             <CalculateButton
               name="Calculate"
               onPress={handleCalculateButton}
@@ -121,13 +121,7 @@ const RdCalculator = () => {
               onPress={resetData}
               srcPath={allImages.Reset}
             />
-            <CalculateButton
-              name="History"
-              onPress={() => {
-                navigation.navigate('DiscountHistory');
-              }}
-              srcPath={allImages.History}
-            />
+            
           </View>
         </View>
 

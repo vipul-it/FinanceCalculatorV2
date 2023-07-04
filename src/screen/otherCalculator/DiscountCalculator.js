@@ -28,16 +28,12 @@ const DiscountCalculator = () => {
     setDiscountPercent('');
     setPriceAfterDiscount('');
     setYouSave('');
-
   };
 
-
-  const handleCalculateButton =()=>{
-   
+  const handleCalculateButton = () => {
     calculateDiscount();
     Keyboard.dismiss();
-
-  }
+  };
   // Calculation start
   const calculateDiscount = () => {
     Keyboard.dismiss();
@@ -53,7 +49,6 @@ const DiscountCalculator = () => {
 
     const price = parseFloat(priceBeforeDiscount);
     const discount = parseFloat(discountPercent);
-    
 
     // Validate numeric input
     if (isNaN(price) || isNaN(discount)) {
@@ -82,7 +77,7 @@ const DiscountCalculator = () => {
         onPress={() => {
           navigation.goBack();
         }}
-        name="TIP Calculator"
+        name="Discount Calculator"
       />
       <ScrollView>
         <View className="mx-5 mt-2">
@@ -111,7 +106,7 @@ const DiscountCalculator = () => {
             <Text className="text-blackC">&#37;</Text>
           </View>
 
-          <View className="flex-row justify-between my-12">
+          <View className="flex-row justify-evenly my-12">
             <CalculateButton
               name="Calculate"
               onPress={handleCalculateButton}
@@ -121,13 +116,6 @@ const DiscountCalculator = () => {
               name="Reset"
               onPress={resetData}
               srcPath={allImages.Reset}
-            />
-            <CalculateButton
-              name="History"
-              onPress={() => {
-                navigation.navigate('DiscountHistory');
-              }}
-              srcPath={allImages.History}
             />
           </View>
         </View>
@@ -160,8 +148,6 @@ const DiscountCalculator = () => {
               &#8377; {youSave}
             </Text>
           </View>
-
-         
         </View>
       </ScrollView>
     </View>

@@ -88,7 +88,7 @@ const EmiHistory = () => {
   return (
     <View className="flex-1 bg-whiteC">
       <TopTwoIcon
-        name="History"
+        name="EMI History"
         onPressRight={deleteAllRecords}
         onPressLeft={() => {
           navigation.goBack();

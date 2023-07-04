@@ -136,7 +136,7 @@ const TipCalculator = () => {
               <Text style={{color: 'red'}}>{nofPeopleError}</Text>
             ) : null}
           </KeyboardAwareScrollView>
-          <View className="flex-row justify-between my-12">
+          <View className="flex-row justify-evenly my-12">
             <CalculateButton
               name="Calculate"
               onPress={calculateBill}
@@ -147,13 +147,13 @@ const TipCalculator = () => {
               onPress={resetData}
               srcPath={allImages.Reset}
             />
-            <CalculateButton
+            {/* <CalculateButton
               name="History"
               onPress={() => {
                 navigation.navigate('TipHistory');
               }}
               srcPath={allImages.History}
-            />
+            /> */}
           </View>
 
           {/* <Text>Tip Amount: {tipAmount}</Text>

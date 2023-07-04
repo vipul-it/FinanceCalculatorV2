@@ -145,7 +145,7 @@ const FdCalculator = () => {
             />
           </View>
 
-          <View className="flex-row justify-between my-12">
+          <View className="flex-row justify-evenly my-12">
             <CalculateButton
               name="Calculate"
               onPress={handleCalculateButton}
@@ -155,13 +155,6 @@ const FdCalculator = () => {
               name="Reset"
               onPress={resetData}
               srcPath={allImages.Reset}
-            />
-            <CalculateButton
-              name="History"
-              onPress={() => {
-                navigation.navigate('DiscountHistory');
-              }}
-              srcPath={allImages.History}
             />
           </View>
         </View>
@@ -173,14 +166,11 @@ const FdCalculator = () => {
           />
 
           <View className="flex-row justify-between mx-10 items-center">
-            <Text className="text-whiteC pt-2 text-lg ">
-            Maturity Amount
-            </Text>
+            <Text className="text-whiteC pt-2 text-lg ">Maturity Amount</Text>
             <Text className="text-primaryHeading text-lg ">
               &#8377; {maturityAmount}
             </Text>
           </View>
-          
         </View>
       </ScrollView>
     </View>

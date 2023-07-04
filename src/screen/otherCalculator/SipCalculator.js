@@ -18,10 +18,11 @@ import {allImages} from '../../utils/images';
 const SipCalculator = () => {
   const navigation = useNavigation();
 
-  const [investmentAmount, setInvestmentAmount] = useState('');
+  const [totalInvestmentAmount, setTotalInvestmentAmount] = useState('');
   const [expectedReturnRate, setExpectedReturnRate] = useState('');
   const [years, setYears] = useState('');
   const [months, setMonths] = useState('');
+  const [investedAmount, setInvestedAmount] = useState('');
   const [totalProfit, setTotalProfit] = useState('');
   const [totalReturn, setTotalReturn] = useState('');
 
@@ -37,37 +38,34 @@ const SipCalculator = () => {
 
   const handleCalculateButton = () => {
     Keyboard.dismiss();
-    calculateSIPReturns();
+    calculateSIP();
   };
-  const calculateSIPReturns = () => {
-    // Validate input values
-    if (!investmentAmount || !expectedReturnRate || !years) {
-      Alert.alert('Validation Error', 'Please enter investment amount, expected return rate, and number of years.');
+  const calculateSIP = () => {
+    // Basic validation
+    if (
+      totalInvestmentAmount === '' ||
+      expectedReturnRate === '' ||
+      years === '' ||
+      months === ''
+    ) {
+      Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
-    const investment = parseFloat(investmentAmount);
-    const rate = parseFloat(expectedReturnRate);
-    const totalYears = parseInt(years);
-    const totalMonths = parseInt(months || '0');
+    const totalMonths = parseInt(years) * 12 + parseInt(months);
+    const monthlyInvestment = parseFloat(totalInvestmentAmount) / totalMonths;
 
-    // Validate numeric input
-    if (isNaN(investment) || isNaN(rate) || isNaN(totalYears) || isNaN(totalMonths)) {
-      Alert.alert(
-        'Validation Error',
-        'Please enter valid numeric values for investment amount, expected return rate, years, and months.'
-      );
-      return;
-    }
+    const compoundInterest =
+      Math.pow(1 + parseFloat(expectedReturnRate) / 100, totalMonths) - 1;
 
-    // Calculate total profit and total return
-    const totalMonthsInYears = totalYears * 12 + totalMonths;
-    const totalReturnAmount = investment * (Math.pow(1 + rate / 100, totalMonthsInYears) - 1);
-    const totalProfitAmount = totalReturnAmount - investment;
+    const calculatedInvestedAmount = monthlyInvestment * totalMonths;
+    const calculatedTotalProfit = calculatedInvestedAmount * compoundInterest;
+    const calculatedTotalReturn =
+      calculatedInvestedAmount + calculatedTotalProfit;
 
-    // Update state variables
-    setTotalProfit(totalProfitAmount.toFixed(2));
-    setTotalReturn(totalReturnAmount.toFixed(2));
+    setInvestedAmount(calculatedInvestedAmount.toFixed(2));
+    setTotalProfit(calculatedTotalProfit.toFixed(2));
+    setTotalReturn(calculatedTotalReturn.toFixed(2));
   };
   // Calculation end
 
@@ -86,8 +84,8 @@ const SipCalculator = () => {
             <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
               <TextInput
                 className="w-full text-blackC"
-                value={investmentAmount}
-                onChangeText={setInvestmentAmount}
+                value={totalInvestmentAmount}
+                onChangeText={text => setTotalInvestmentAmount(text)}
                 placeholder="eg. 100000"
                 keyboardType="numeric"
               />
@@ -99,7 +97,7 @@ const SipCalculator = () => {
             <TextInput
               className="w-full text-blackC"
               value={expectedReturnRate}
-        onChangeText={setExpectedReturnRate}
+        onChangeText={text => setExpectedReturnRate(text)}
               placeholder="eg. 8"
               keyboardType="numeric"
             />
@@ -110,7 +108,7 @@ const SipCalculator = () => {
             <TextInput
               className="w-[25%] text-blackC"
               value={years}
-              onChangeText={setYears}
+              onChangeText={text => setYears(text)}
               placeholder="Years"
               keyboardType="numeric"
             />
@@ -119,13 +117,13 @@ const SipCalculator = () => {
             <TextInput
               className="w-full text-blackC"
               value={months}
-              onChangeText={setMonths}
+        onChangeText={text => setMonths(text)}
               placeholder="Months"
               keyboardType="numeric"
             />
           </View>
 
-          <View className="flex-row justify-between my-12">
+          <View className="flex-row justify-evenly my-12">
             <CalculateButton
               name="Calculate"
               onPress={handleCalculateButton}
@@ -136,13 +134,7 @@ const SipCalculator = () => {
               onPress={resetData}
               srcPath={allImages.Reset}
             />
-            <CalculateButton
-              name="History"
-              onPress={() => {
-                navigation.navigate('DiscountHistory');
-              }}
-              srcPath={allImages.History}
-            />
+            
           </View>
         </View>
 
@@ -155,7 +147,7 @@ const SipCalculator = () => {
           <View className="flex-row justify-between mx-10 items-center">
             <Text className="text-whiteC pt-2 text-lg ">Invested Amount</Text>
             <Text className="text-primaryHeading text-lg ">
-              &#8377; {investmentAmount}
+              &#8377; {investedAmount}
             </Text>
           </View>
           <View className="flex-row justify-between mx-10 items-center">
@@ -163,7 +155,6 @@ const SipCalculator = () => {
             <Text className="text-primaryHeading text-lg ">
               &#8377; {totalProfit}
             </Text>
-           
           </View>
           <View className="flex-row justify-between mx-10 items-center">
             <Text className="text-whiteC pt-2 text-lg ">Total Return</Text>

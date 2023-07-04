@@ -6,6 +6,8 @@ import {
   Image,
   Keyboard,
   Alert,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
 import CustomTopLayout from '../common/CustomTopLayout';
@@ -17,6 +19,12 @@ import {allImages} from '../../utils/images';
 
 const InterestCalculator = () => {
   const navigation = useNavigation();
+  const [selectedButton, setSelectedButton] = useState('');
+
+  const handleButtonPress = (button) => {
+    setSelectedButton(button);
+  };
+
   const [amount, setAmount] = useState('');
   const [interestRate, setInterestRate] = useState('');
   const [timePeriod, setTimePeriod] = useState('');
@@ -63,9 +71,40 @@ const InterestCalculator = () => {
         name="Interest Calculator"
       />
 
-     
-     
-     
+
+  <View className="flex-row justify-evenly mt-4">
+  <TouchableOpacity >
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingHorizontal: 12,
+            backgroundColor: '#1B39FE',
+            alignItems: 'center',
+            borderRadius: 10,
+            paddingVertical: 6,
+            justifyContent: 'center'
+          }}>
+
+          <Text style={{color: '#fff', fontSize: 15}}>1sdfgjh</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity >
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingHorizontal: 12,
+            backgroundColor: '#1B39FE',
+            alignItems: 'center',
+            borderRadius: 10,
+            paddingVertical: 6,
+            justifyContent: 'center'
+          }}>
+
+          <Text style={{color: '#fff', fontSize: 15}}>2asdfghj</Text>
+        </View>
+      </TouchableOpacity>
+  </View>
+
 
       <ScrollView>
         <View className="mx-5 mt-2">
@@ -93,6 +132,17 @@ const InterestCalculator = () => {
             />
             <Text className="text-blackC">&#37;</Text>
           </View>
+          <SubHeading name="Compound Interval" />
+          <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
+            <TextInput
+              className="w-full text-blackC"
+              value={interestRate}
+              onChangeText={setInterestRate}
+              placeholder="eg. 8"
+              keyboardType="numeric"
+            />
+            <Text className="text-blackC">&#37;</Text>
+          </View>
           <SubHeading name="Time Period" />
           <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
             <TextInput
@@ -104,18 +154,8 @@ const InterestCalculator = () => {
             />
             <Text className="text-blackC">No. of Months</Text>
           </View>
-          {/* <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
-            <TextInput
-              className="w-[25%] text-blackC"
-              value={months}
-              onChangeText={setMonths}
-              placeholder="Months"
-              keyboardType="numeric"
-            />
-            <Text className="text-blackC">Months</Text>
-          </View> */}
 
-          <View className="flex-row justify-between my-12">
+          <View className="flex-row justify-evenly my-12">
             <CalculateButton
               name="Calculate"
               onPress={handleCalculateButton}
@@ -126,13 +166,13 @@ const InterestCalculator = () => {
               onPress={resetData}
               srcPath={allImages.Reset}
             />
-            <CalculateButton
+            {/* <CalculateButton
               name="History"
               onPress={() => {
                 navigation.navigate('DiscountHistory');
               }}
               srcPath={allImages.History}
-            />
+            /> */}
           </View>
         </View>
 
@@ -143,7 +183,7 @@ const InterestCalculator = () => {
           />
 
           <View className="flex-row justify-between mx-10 items-center">
-            <Text className="text-whiteC pt-2 text-lg ">Maturity Amount</Text>
+            <Text className="text-whiteC pt-2 text-lg ">Principal Amount</Text>
             <Text className="text-primaryHeading text-lg ">
               &#8377; {maturityAmount}
             </Text>
@@ -155,7 +195,7 @@ const InterestCalculator = () => {
             </Text>
           </View>
           <View className="flex-row justify-between mx-10 items-center">
-            <Text className="text-whiteC pt-2 text-lg ">Total Investment</Text>
+            <Text className="text-whiteC pt-2 text-lg ">Total Amount </Text>
             <Text className="text-primaryHeading text-lg ">
               &#8377; {totalInvestment}
             </Text>
@@ -165,5 +205,8 @@ const InterestCalculator = () => {
     </View>
   );
 };
+
+
+
 
 export default InterestCalculator;
