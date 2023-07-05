@@ -8,7 +8,6 @@ import {
   Alert,
   FlatList,
   TouchableOpacity,
-  Button,
   Keyboard,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -20,8 +19,8 @@ import CalculateButton from './common/CalculateButton';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {dummyData} from './common/Daymeydata';
 import DoughnutChart from './common/DoughnutChart';
+import moment from 'moment';
 
-import EmiHistory from './EmiHistory';
 
 import SQLite from 'react-native-sqlite-storage';
 
@@ -63,8 +62,8 @@ const Emicalculator = () => {
   };
 
   const calculateLoan = () => {
-     // Hide the keyboard
-     Keyboard.dismiss();
+    // Hide the keyboard
+    Keyboard.dismiss();
 
     const loanAmount = parseFloat(amount);
     const loanInterest = parseFloat(interest) / 100;
@@ -106,52 +105,13 @@ const Emicalculator = () => {
     calculateLoan();
     insertData();
   };
-  console.log(amount);
-  console.log(totalInterestPercentage);
-  
 
-  // Insert the date in text format
-  const date = '2023-07-02'; // Format: YYYY-MM-DD
+  const currentDate = moment();
+  const formattedTime = currentDate.format('hh:mm a');
+  const currentDateFormat = moment().format('DD MMMM');
 
-  console.log(JSON.stringify(date));
-
-
-  const insertData = () => {
-    // const amount = amount;
-    // const interest = interest;
-    // const tenure = tenure;
-    // const monthlyEMI = monthlyEMI;
-    // const totalInterest = totalInterest;
-    // const totalPayment = totalPayment;
-    // const loanAmountPercentage = loanAmountPercentage;
-    // const totalInterestPercentage = totalInterestPercentage;
-
-    db.transaction(tx => {
-      tx.executeSql(
-        'INSERT INTO LoanData (amount, interest, tenure, monthlyEMI, totalInterest, totalPayment, loanAmountPercentage, totalInterestPercentage, date_column) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        [
-          amount,
-          interest,
-          tenure,
-          monthlyEMI,
-          totalInterest,
-          totalPayment,
-          loanAmountPercentage,
-          totalInterestPercentage,
-          date
-          
-        ],
-        (_, result) => {
-          if (result.insertId !== undefined) {
-            Alert.alert('Success', 'Data inserted successfully!');
-            fetchData();
-          } else {
-            Alert.alert('Error', 'Failed to insert data!');
-          }
-        },
-      );
-    });
-  };
+  console.log(currentDateFormat); // Output: 07 July
+  console.log(formattedTime);
 
   const [selectedcolor, setSelected] = useState(1);
 
@@ -174,6 +134,33 @@ const Emicalculator = () => {
       legendFontSize: 15,
     },
   ];
+
+  const insertData = () => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'INSERT INTO LoanData (amount, interest, tenure, monthlyEMI, totalInterest, totalPayment, loanAmountPercentage, totalInterestPercentage, date_column) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        [
+          amount,
+          interest,
+          tenure,
+          monthlyEMI,
+          totalInterest,
+          totalPayment,
+          loanAmountPercentage,
+          totalInterestPercentage,
+          date,
+        ],
+        (_, result) => {
+          if (result.insertId !== undefined) {
+            Alert.alert('Success', 'Data inserted successfully!');
+            fetchData();
+          } else {
+            Alert.alert('Error', 'Failed to insert data!');
+          }
+        },
+      );
+    });
+  };
 
   return (
     <>
@@ -536,7 +523,6 @@ const Emicalculator = () => {
               <View className="flex items-center  py-4">
                 <DoughnutChart chartData={chartData} />
               </View>
-
               <View className="flex-row justify-evenly my-6">
                 <CalculateButton
                   name="Details"
