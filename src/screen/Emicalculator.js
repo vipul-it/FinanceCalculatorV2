@@ -21,7 +21,6 @@ import {dummyData} from './common/Daymeydata';
 import DoughnutChart from './common/DoughnutChart';
 import moment from 'moment';
 
-
 import SQLite from 'react-native-sqlite-storage';
 
 const db = SQLite.openDatabase('mydb.db');
@@ -35,7 +34,7 @@ const Emicalculator = () => {
     // Create the table if it doesn't exist
     db.transaction(tx => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS LoanData (id INTEGER PRIMARY KEY AUTOINCREMENT, amount REAL, interest REAL, tenure INTEGER, monthlyEMI REAL, totalInterest REAL, totalPayment REAL, loanAmountPercentage REAL, totalInterestPercentage REAL, date_column TEXT)',
+        'CREATE TABLE IF NOT EXISTS LoanData (id INTEGER PRIMARY KEY AUTOINCREMENT, amount REAL, interest REAL, tenure INTEGER, monthlyEMI REAL, totalInterest REAL, totalPayment REAL, loanAmountPercentage REAL, totalInterestPercentage REAL)',
         [],
       );
     });
@@ -138,7 +137,7 @@ const Emicalculator = () => {
   const insertData = () => {
     db.transaction(tx => {
       tx.executeSql(
-        'INSERT INTO LoanData (amount, interest, tenure, monthlyEMI, totalInterest, totalPayment, loanAmountPercentage, totalInterestPercentage, date_column) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO LoanData (amount, interest, tenure, monthlyEMI, totalInterest, totalPayment, loanAmountPercentage, totalInterestPercentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
         [
           amount,
           interest,
@@ -148,7 +147,6 @@ const Emicalculator = () => {
           totalPayment,
           loanAmountPercentage,
           totalInterestPercentage,
-          date,
         ],
         (_, result) => {
           if (result.insertId !== undefined) {
@@ -186,8 +184,9 @@ const Emicalculator = () => {
                     borderColor:
                       selectedcolor == item.id ? '#CBCBCB' : '#BDBDBD',
                     width: 100,
-                    padding: 10,
+                    height: 70,
                     alignSelf: 'center',
+                    justifyContent: 'center',
                     borderRadius: 9,
                     marginHorizontal: 15,
                     marginTop: 20,
