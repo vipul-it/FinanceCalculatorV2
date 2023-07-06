@@ -79,7 +79,7 @@ const Dashboard = () => {
           </View>
         </View>
 
-        <View className="mx-5">
+        <View className="mx-5 pl-6">
           <Text className=" my-4 text-primaryHeading text-2xl font-bold">
             Value of Your money
           </Text>
