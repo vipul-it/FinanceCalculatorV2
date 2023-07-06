@@ -118,7 +118,7 @@ const InterestCalculator = () => {
             name="Interest Calculator"
           />
         </View>
-        <View className="mx-[27%]  mt-[20px]">
+        <View className="mt-[20px] flex justify-center items-center">
           <FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}

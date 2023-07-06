@@ -15,7 +15,7 @@ const OtherCalculator = () => {
         name="Other Calculator"
       />
       <Text className="my-0 -mt-1"></Text>
-      <ScrollView className="mx-5">
+      <ScrollView showsHorizontalScrollIndicator={false} className="mx-5">
         <TouchableOpacity onPress={()=>{
           navigation.navigate('TipCalculator');
         }}>

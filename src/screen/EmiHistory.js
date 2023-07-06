@@ -83,7 +83,7 @@ const EmiHistory = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(JSON.stringify(data));
+  // console.log(JSON.stringify(data));
 
   const showAlert = () => {
     Alert.alert('Alert', 'History Clear.');

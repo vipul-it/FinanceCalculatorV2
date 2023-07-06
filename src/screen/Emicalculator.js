@@ -120,8 +120,7 @@ const Emicalculator = () => {
   const formattedTime = currentDate.format('hh:mm a');
   const currentDateFormat = moment().format('DD MMMM');
 
-  console.log(currentDateFormat); // Output: 07 July
-  console.log(formattedTime);
+
 
   const [selectedcolor, setSelected] = useState(1);
 

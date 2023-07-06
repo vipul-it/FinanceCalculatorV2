@@ -57,12 +57,10 @@ const PrePayments = () => {
   const dummyData = [
     {
       title: 'Pre payment',
-
       id: 1,
     },
     {
       title: 'ROI Change',
-
       id: 2,
     },
   ];
@@ -88,7 +86,7 @@ const PrePayments = () => {
             name="Revised EMI & Tenure"
           />
         </View>
-        <View className="mx-[26%]  mt-[20px]">
+        <View className="mt-[20px] flex justify-center items-center">
           <FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -298,7 +296,7 @@ const PrePayments = () => {
                     New Tenure
                   </Text>
                   <Text className="text-primaryDark text-lg text-center">
-                    &#8377; 0.0
+                    0 Months
                   </Text>
                 </View>
 
@@ -307,7 +305,7 @@ const PrePayments = () => {
                     Old Tenure
                   </Text>
                   <Text className="text-primaryDark text-lg text-center">
-                    &#8377; 0.0
+                    0 Months
                   </Text>
                 </View>
 
@@ -316,7 +314,7 @@ const PrePayments = () => {
                     Difference
                   </Text>
                   <Text className="text-primaryDark text-lg text-center">
-                    &#8377; 0.0
+                    0 Months
                   </Text>
                 </View>
               </View>
