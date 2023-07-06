@@ -16,19 +16,10 @@ import {useNavigation} from '@react-navigation/native';
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
-import {Dropdown} from 'react-native-element-dropdown';
 import CustomTopLayout from './common/CustomTopLayout';
-import { allImages } from '../utils/images';
+import {allImages} from '../utils/images';
 import SubHeading from './common/SubHeading';
 import CalculateButton from './common/CalculateButton';
-
-// Alert.alert(JSON.stringify(data))
-const data = [
-  {label: 'None', value: '0'},
-  {label: 'Monthly', value: '1'},
-  {label: 'Quartly', value: '3'},
-  {label: 'Yearly', value: '12'},
-];
 
 const PrePayments = () => {
   const navigation = useNavigation();
@@ -143,7 +134,7 @@ const PrePayments = () => {
         <ScrollView>
           {selectedcolor == '1' ? (
             <View className="mx-5">
-              <SubHeading name="Amount" />
+              <SubHeading name="Outstanding Amount" />
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
@@ -156,7 +147,7 @@ const PrePayments = () => {
                   <Text className="text-blackC">&#8377;</Text>
                 </View>
               </KeyboardAwareScrollView>
-              <SubHeading name="Intrest Rate" />
+              <SubHeading name="Current Intrest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
                   className="w-full text-blackC"
@@ -167,55 +158,37 @@ const PrePayments = () => {
                 />
                 <Text className="text-blackC">&#37;</Text>
               </View>
-              <SubHeading name="Compound Interval" />
-              <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg  items-center  px-5">
-                <Dropdown
-                  className="w-full my-2 text-blackC"
-                  data={data}
-                  labelField="label"
-                  valueField="value"
-                  placeholder="None"
-                  value={value}
-                  onChange={item => {
-                    setValue(item.value);
-                  }}
-                  renderItem={renderItem}
-                />
-              </View>
 
-              <SubHeading name="Time Period" />
+              <SubHeading name="Current EMI" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-16">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
                     className="w-full text-blackC"
-                    value={tenure}
-                    onChangeText={text => setTenure(text)}
-                    placeholder="eg. 5"
+                    value={amount}
+                    onChangeText={text => setAmount(text)}
+                    placeholder="eg. 100000"
                     keyboardType="numeric"
                   />
-                  <View className="flex-row">
-                    <Text className="text-blackC">Years</Text>
-                  </View>
+                  <Text className="text-blackC">&#8377;</Text>
                 </View>
               </KeyboardAwareScrollView>
+              <SubHeading name="Pre-Payment Amount" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-16">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
                     className="w-full text-blackC"
-                    value={tenure}
-                    onChangeText={text => setTenure(text)}
-                    placeholder="eg. 3"
+                    value={amount}
+                    onChangeText={text => setAmount(text)}
+                    placeholder="eg. 100000"
                     keyboardType="numeric"
                   />
-                  <View className="flex-row">
-                    <Text className="text-blackC">Months</Text>
-                  </View>
+                  <Text className="text-blackC">&#8377;</Text>
                 </View>
               </KeyboardAwareScrollView>
             </View>
           ) : selectedcolor == '2' ? (
             <View className="mx-5">
-              <SubHeading name="Amount" />
+              <SubHeading name="Outstanding Amount" />
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
@@ -228,7 +201,7 @@ const PrePayments = () => {
                   <Text className="text-blackC">&#8377;</Text>
                 </View>
               </KeyboardAwareScrollView>
-              <SubHeading name="Intrest Rate" />
+              <SubHeading name="Current Intrest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
                   className="w-full text-blackC"
@@ -239,57 +212,31 @@ const PrePayments = () => {
                 />
                 <Text className="text-blackC">&#37;</Text>
               </View>
-              <SubHeading name="Compound Interval" />
-              <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg  items-center  px-5">
-                <Dropdown
-                  className="w-full my-2 text-blackC"
-                  data={data}
-                  labelField="label"
-                  valueField="value"
-                  placeholder="None"
-                  value={value}
-                  onChange={item => {
-                    setValue(item.value);
-                  }}
-                  renderItem={renderItem}
+
+              <SubHeading name="Current EMI" />
+              <KeyboardAwareScrollView>
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
+                  <TextInput
+                    className="w-full text-blackC"
+                    value={amount}
+                    onChangeText={text => setAmount(text)}
+                    placeholder="eg. 100000"
+                    keyboardType="numeric"
+                  />
+                  <Text className="text-blackC">&#8377;</Text>
+                </View>
+              </KeyboardAwareScrollView>
+              <SubHeading name="Revised Intrest Rate" />
+              <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
+                <TextInput
+                  className="w-full text-blackC"
+                  value={interest}
+                  onChangeText={text => setInterest(text)}
+                  placeholder="eg. 8"
+                  keyboardType="numeric"
                 />
+                <Text className="text-blackC">&#37;</Text>
               </View>
-              <SubHeading name="From Date" />
-              <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-8">
-                  <TextInput
-                    className="w-full text-blackC"
-                    value={tenure}
-                    onChangeText={text => setTenure(text)}
-                    placeholder="DD-MM-YYYY"
-                    keyboardType="numeric"
-                  />
-                  <View className="flex-row">
-                    <Image
-                      className="w-[15px] h-[15px]"
-                      source={allImages.Calender}
-                    />
-                  </View>
-                </View>
-              </KeyboardAwareScrollView>
-              <SubHeading name="To Date" />
-              <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-8">
-                  <TextInput
-                    className="w-full text-blackC"
-                    value={tenure}
-                    onChangeText={text => setTenure(text)}
-                    placeholder="DD-MM-YYYY"
-                    keyboardType="numeric"
-                  />
-                  <View className="flex-row">
-                    <Image
-                      className="w-[15px] h-[15px]"
-                      source={allImages.Calender}
-                    />
-                  </View>
-                </View>
-              </KeyboardAwareScrollView>
             </View>
           ) : null}
 
@@ -307,26 +254,71 @@ const PrePayments = () => {
           </View>
 
           <View>
-            <View className="h-[240px] w-full rounded-t-[30px] bg-primaryC py-3">
-              <Image
-                className="w-[135px] h-[5px] self-center mb-6"
-                source={allImages.HomeIndicator}
-              />
-              <View className="flex-row justify-between items-center mx-10 ">
-                <Text className="text-whiteC pt-2 text-lg ">
-                  Principle Amount
-                </Text>
-                <Text className="text-primaryHeading text-lg ">&#8377; {}</Text>
+            <View className="h-800px] w-full rounded-t-[30px] bg-primaryC py-3">
+              <Text className="text-whiteC py-4 text-[12px] text-center">
+                If you want to change EMI then
+              </Text>
+
+              <View className="flex-row mr-2 justify-evenly">
+                <View>
+                  <Text className="text-whiteC text-lg text-center">
+                    New EMI
+                  </Text>
+                  <Text className="text-primaryDark text-lg text-center">
+                    &#8377; 0.0
+                  </Text>
+                </View>
+
+                <View>
+                  <Text className="text-whiteC text-lg text-center">
+                    Old EMI
+                  </Text>
+                  <Text className="text-primaryDark text-lg text-center">
+                    &#8377; 0.0
+                  </Text>
+                </View>
+
+                <View>
+                  <Text className="text-whiteC text-lg text-center">
+                    Difference
+                  </Text>
+                  <Text className="text-primaryDark text-lg text-center">
+                    &#8377; 0.0
+                  </Text>
+                </View>
               </View>
-              <View className="flex-row justify-between items-center mx-10">
-                <Text className="text-whiteC pt-2 text-lg ">
-                  Total Interest
-                </Text>
-                <Text className="text-primaryHeading text-lg ">&#8377; {}</Text>
-              </View>
-              <View className="flex-row justify-between items-center mx-10">
-                <Text className="text-whiteC pt-2 text-lg ">Total Amount</Text>
-                <Text className="text-primaryHeading text-lg ">&#8377; {}</Text>
+              <Text className="border-whiteC  text-center border-b-[1px]"></Text>
+              <Text className="text-whiteC py-4 text-[12px] text-center">
+                If you want to change Tenure then
+              </Text>
+
+              <View className="flex-row mr-2 justify-evenly">
+                <View>
+                  <Text className="text-whiteC text-lg text-center">
+                    New Tenure
+                  </Text>
+                  <Text className="text-primaryDark text-lg text-center">
+                    &#8377; 0.0
+                  </Text>
+                </View>
+
+                <View>
+                  <Text className="text-whiteC text-lg text-center">
+                    Old Tenure
+                  </Text>
+                  <Text className="text-primaryDark text-lg text-center">
+                    &#8377; 0.0
+                  </Text>
+                </View>
+
+                <View>
+                  <Text className="text-whiteC text-lg text-center">
+                    Difference
+                  </Text>
+                  <Text className="text-primaryDark text-lg text-center">
+                    &#8377; 0.0
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

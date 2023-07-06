@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Keyboard,
   StyleSheet,
+  Button,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
@@ -20,6 +21,7 @@ import {allImages} from '../../utils/images';
 import CalculateButton from '../common/CalculateButton';
 import SubHeading from '../common/SubHeading';
 import {Dropdown} from 'react-native-element-dropdown';
+import DatePicker from 'react-native-date-picker';
 
 // Alert.alert(JSON.stringify(data))
 const data = [
@@ -31,6 +33,27 @@ const data = [
 
 const InterestCalculator = () => {
   const navigation = useNavigation();
+
+  const [openFromDate, setOpenFromDate] = useState(false);
+  const [openToDate, setOpenToDate] = useState(false);
+
+  const [selectedDateFrom, setSelectedDateFrom] = useState(new Date());
+  const [selectedDateTo, setSelectedDateTo] = useState(new Date());
+
+  // Format Date From
+  const formatSelectedDateFrom = () => {
+    const options = {year: 'numeric', month: '2-digit', day: '2-digit'};
+    return selectedDateFrom
+      .toLocaleDateString(undefined, options)
+      .replace(/\//g, '-');
+  };
+  // Format Date To
+  const formatSelectedDateTo = () => {
+    const options = {year: 'numeric', month: '2-digit', day: '2-digit'};
+    return selectedDateTo
+      .toLocaleDateString(undefined, options)
+      .replace(/\//g, '-');
+  };
 
   const [amount, setAmount] = useState('');
   const [interest, setInterest] = useState('');
@@ -50,7 +73,6 @@ const InterestCalculator = () => {
       </View>
     );
   };
-
   const resetData = () => {
     setAmount('');
     setInterest('');
@@ -114,8 +136,7 @@ const InterestCalculator = () => {
                       alignSelf: 'center',
                       justifyContent: 'center',
                       borderRadius: 5,
-                      // marginHorizontal: 15,
-                      // marginTop: 40,
+
                       backgroundColor:
                         selectedcolor == item.id ? '#1F3CFE' : '#fff',
                     }}
@@ -255,39 +276,72 @@ const InterestCalculator = () => {
                   renderItem={renderItem}
                 />
               </View>
+              <DatePicker
+                modal
+                mode="date"
+                open={openFromDate}
+                date={selectedDateFrom}
+                onConfirm={selectedDateFrom => {
+                  setOpenFromDate(false);
+                  setSelectedDateFrom(selectedDateFrom);
+                }}
+                onCancel={() => {
+                  setOpenFromDate(false);
+                }}
+              />
+              <DatePicker
+                modal
+                mode="date"
+                open={openToDate}
+                date={selectedDateTo}
+                onConfirm={selectedDateTo => {
+                  setOpenToDate(false);
+                  setSelectedDateTo(selectedDateTo);
+                }}
+                onCancel={() => {
+                  setOpenToDate(false);
+                }}
+              />
               <SubHeading name="From Date" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-8">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-12">
                   <TextInput
                     className="w-full text-blackC"
-                    value={tenure}
-                    onChangeText={text => setTenure(text)}
+                    value={formatSelectedDateFrom(selectedDateFrom)}
                     placeholder="DD-MM-YYYY"
                     keyboardType="numeric"
                   />
-                  <View className="flex-row">
-                    <Image
-                      className="w-[15px] h-[15px]"
-                      source={allImages.Calender}
-                    />
+                  <View className="p-3">
+                    <TouchableOpacity
+                      title="Open"
+                      onPress={() => setOpenFromDate(true)}>
+                      <Image
+                        className="w-[15px] h-[15px]"
+                        source={allImages.Calender}
+                      />
+                    </TouchableOpacity>
                   </View>
                 </View>
               </KeyboardAwareScrollView>
+
               <SubHeading name="To Date" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-8">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-12">
                   <TextInput
                     className="w-full text-blackC"
-                    value={tenure}
-                    onChangeText={text => setTenure(text)}
+                    value={formatSelectedDateTo(selectedDateTo)}
                     placeholder="DD-MM-YYYY"
                     keyboardType="numeric"
                   />
-                  <View className="flex-row">
-                    <Image
-                      className="w-[15px] h-[15px]"
-                      source={allImages.Calender}
-                    />
+                  <View className="p-3">
+                    <TouchableOpacity
+                      title="Open"
+                      onPress={() => setOpenToDate(true)}>
+                      <Image
+                        className="w-[15px] h-[15px]"
+                        source={allImages.Calender}
+                      />
+                    </TouchableOpacity>
                   </View>
                 </View>
               </KeyboardAwareScrollView>
