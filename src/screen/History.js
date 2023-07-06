@@ -5,33 +5,17 @@ import {
   Alert,
   TouchableOpacity,
   ScrollView,
-  Button,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-
-import {useNavigation} from '@react-navigation/native';
-
-import SQLite from 'react-native-sqlite-storage';
 import TopTwoIcon from './common/TopTwoIcon';
-import { allImages } from '../utils/images';
+import {useNavigation} from '@react-navigation/native';
+import {allImages} from '../utils/images';
+import SQLite from 'react-native-sqlite-storage';
 
 const db = SQLite.openDatabase('mydb.db');
 
 const History = () => {
   const navigation = useNavigation();
-  const [currentDateTime, setCurrentDateTime] = useState('');
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentDate = new Date();
-      const formattedDateTime = currentDate.toLocaleString();
-      setCurrentDateTime(formattedDateTime);
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   const [data, setData] = useState([]);
 
@@ -50,11 +34,29 @@ const History = () => {
     });
   };
 
+  const handleDeleteDatabase = () => {
+    Alert.alert(
+      'Confirm Deletion',
+      'Are you sure you want to delete the all Hstory?',
+      [
+        {
+          text: 'No',
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => deleteAllRecords(),
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
   const deleteAllRecords = () => {
     db.transaction(tx => {
       tx.executeSql('DELETE FROM LoanData', [], (_, result) => {
         if (result.rowsAffected > 0) {
-          Alert.alert('Success', 'All records deleted successfully!');
+          // Alert.alert('Success', 'All records deleted successfully!');
           fetchData();
         } else {
           Alert.alert('Error', 'Failed to delete records!');
@@ -80,9 +82,8 @@ const History = () => {
 
   useEffect(() => {
     fetchData();
-
   }, []);
-  console.log(JSON.stringify(data));
+  // console.log(JSON.stringify(data));
 
   const showAlert = () => {
     Alert.alert('Alert', 'History Clear.');
@@ -91,7 +92,7 @@ const History = () => {
     <View className="flex-1 bg-whiteC">
       <TopTwoIcon
         name="EMI History"
-        onPressRight={deleteAllRecords}
+        onPressRight={handleDeleteDatabase}
         onPressLeft={() => {
           navigation.goBack();
         }}
@@ -114,7 +115,7 @@ const History = () => {
                   <Text>
                     Total Interest Percentage: {item.totalInterestPercentage}
                   </Text> */}
-                  
+
                 <View className="flex-row border-[1px] border-Cgray50 justify-between mx-5 items-center rounded-lg p-4 my-2">
                   <View className="flex-row  items-center">
                     <TouchableOpacity
@@ -130,7 +131,7 @@ const History = () => {
                     <View>
                       <Text className="text-primaryHeading font-semibold ">
                         &#8377; {item.amount} with {item.interest}% for{' '}
-                        {item.tenure} months
+                        {item.tenure} years
                       </Text>
                       <Text className="text-primaryDark font-semibold">
                         7 June 2023, 03:07 pm

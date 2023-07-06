@@ -90,16 +90,16 @@ const Detilsshowemi = () => {
         }}
       />
 
-      <View className="mx-5">
-        <View className="self-end my-5">
+      <View className="mx-5 mt-8">
+        {/* <View className="self-end ">
           <CalculateButton name="Share" srcPath={allImages.Share} />
-        </View>
+        </View> */}
 
         <View className="border-[1px] border-primaryHeading rounded-lg ">
           {/* Table Header */}
           <View className="flex-row bg-primaryDark justify-center px-2 py-2 rounded-t-lg ">
             <View className="">
-              <Text className="text-whiteC font-semibold">Home Loan</Text>
+              <Text className="text-whiteC font-semibold">Loan Details</Text>
             </View>
           </View>
 
