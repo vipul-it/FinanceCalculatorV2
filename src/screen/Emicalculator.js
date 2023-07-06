@@ -49,6 +49,8 @@ const Emicalculator = () => {
   const [loanAmountPercentage, setLoanAmountPercentage] = useState('');
   const [totalInterestPercentage, setTotalInterestPercentage] = useState('');
 
+  // amount interest tenure monthlyEMI totalInterest totalPayment loanAmountPercentage totalInterestPercentage
+
   const resetData = () => {
     setAmount('');
     setInterest('');

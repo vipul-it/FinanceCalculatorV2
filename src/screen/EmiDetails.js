@@ -87,15 +87,15 @@ const EmiDetails = () => {
       />
 
       <View className="mx-5">
-        <View className="self-end my-5">
+        {/* <View className="self-end my-5">
           <CalculateButton name="Share" srcPath={allImages.Share} />
-        </View>
+        </View> */}
 
         <View className="border-[1px] border-primaryHeading rounded-lg ">
           {/* Table Header */}
           <View className="flex-row bg-primaryDark justify-center px-2 py-2 rounded-t-lg ">
             <View className="">
-              <Text className="text-whiteC font-semibold">Home Loan</Text>
+              <Text className="text-whiteC font-semibold">Loan Details</Text>
             </View>
           </View>
 
@@ -106,7 +106,7 @@ const EmiDetails = () => {
                 &#8377; {mydata?.amount}
               </Text>
               
-              <Text className="text-gray-700">Monthly EMI</Text>
+              <Text className="text-gray-700">Monthly EMI2</Text>
             </View>
             <View className="border-r-[1px] border-primaryHeading justify-center items-center flex p-2">
               <Text className="text-primaryHeading ">
