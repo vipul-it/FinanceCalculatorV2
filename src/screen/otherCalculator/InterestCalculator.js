@@ -9,6 +9,7 @@ import {
   FlatList,
   TouchableOpacity,
   Keyboard,
+  StyleSheet,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
@@ -18,8 +19,15 @@ import CustomTopLayout from '../common/CustomTopLayout';
 import {allImages} from '../../utils/images';
 import CalculateButton from '../common/CalculateButton';
 import SubHeading from '../common/SubHeading';
+import {Dropdown} from 'react-native-element-dropdown';
 
-// Alert.alert(JSON.stringify(dummyData))
+// Alert.alert(JSON.stringify(data))
+const data = [
+  {label: 'None', value: '0'},
+  {label: 'Monthly', value: '1'},
+  {label: 'Quartly', value: '3'},
+  {label: 'Yearly', value: '12'},
+];
 
 const InterestCalculator = () => {
   const navigation = useNavigation();
@@ -32,6 +40,16 @@ const InterestCalculator = () => {
   const [totalPayment, setTotalPayment] = useState('');
   const [loanAmountPercentage, setLoanAmountPercentage] = useState('');
   const [totalInterestPercentage, setTotalInterestPercentage] = useState('');
+
+  const [value, setValue] = useState(0);
+  const renderItem = item => {
+    return (
+      <View>
+        <Text className="my-4 px-3">{item.label}</Text>
+        {item.value === value}
+      </View>
+    );
+  };
 
   const resetData = () => {
     setAmount('');
@@ -119,7 +137,7 @@ const InterestCalculator = () => {
             }}
           />
 
-          <View className="my-1">
+          <View className="mt-0.5">
             <Text></Text>
           </View>
         </View>
@@ -151,15 +169,21 @@ const InterestCalculator = () => {
                 <Text className="text-blackC">&#37;</Text>
               </View>
               <SubHeading name="Compound Interval" />
-              <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
-                <TextInput
-                  className="w-full text-blackC"
-                  value={interest}
-                  onChangeText={text => setInterest(text)}
+              <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg  items-center  px-5">
+                <Dropdown
+                  className="w-full my-2 text-blackC"
+                  data={data}
+                  labelField="label"
+                  valueField="value"
                   placeholder="None"
-                  keyboardType="numeric"
+                  value={value}
+                  onChange={item => {
+                    setValue(item.value);
+                  }}
+                  renderItem={renderItem}
                 />
               </View>
+
               <SubHeading name="Time Period" />
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-16">
@@ -217,13 +241,18 @@ const InterestCalculator = () => {
                 <Text className="text-blackC">&#37;</Text>
               </View>
               <SubHeading name="Compound Interval" />
-              <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
-                <TextInput
-                  className="w-full text-blackC"
-                  value={interest}
-                  onChangeText={text => setInterest(text)}
+              <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg  items-center  px-5">
+                <Dropdown
+                  className="w-full my-2 text-blackC"
+                  data={data}
+                  labelField="label"
+                  valueField="value"
                   placeholder="None"
-                  keyboardType="numeric"
+                  value={value}
+                  onChange={item => {
+                    setValue(item.value);
+                  }}
+                  renderItem={renderItem}
                 />
               </View>
               <SubHeading name="From Date" />
@@ -236,8 +265,11 @@ const InterestCalculator = () => {
                     placeholder="DD-MM-YYYY"
                     keyboardType="numeric"
                   />
-                  <View className="flex-row">                
-                    <Image className="w-[15px] h-[15px]" source={allImages.Calender} />
+                  <View className="flex-row">
+                    <Image
+                      className="w-[15px] h-[15px]"
+                      source={allImages.Calender}
+                    />
                   </View>
                 </View>
               </KeyboardAwareScrollView>
@@ -251,8 +283,11 @@ const InterestCalculator = () => {
                     placeholder="DD-MM-YYYY"
                     keyboardType="numeric"
                   />
-                  <View className="flex-row">                
-                    <Image className="w-[15px] h-[15px]" source={allImages.Calender} />
+                  <View className="flex-row">
+                    <Image
+                      className="w-[15px] h-[15px]"
+                      source={allImages.Calender}
+                    />
                   </View>
                 </View>
               </KeyboardAwareScrollView>
