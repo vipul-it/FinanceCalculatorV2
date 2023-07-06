@@ -64,7 +64,7 @@ const FdCalculator = () => {
     ) {
       Alert.alert(
         'Validation Error',
-        'Please enter valid numeric values for amount, interest rate, years, months, and days.',
+        'Please enter all fields.',
       );
       return;
     }

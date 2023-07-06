@@ -36,6 +36,7 @@ import Discount from '../assets/images/Discount.png';
 import FD from '../assets/images/FD.png';
 import SIP from '../assets/images/SIP.png';
 import RD from '../assets/images/RD.png';
+import Calender from '../assets/images/calender.png';
 
 
 
@@ -77,4 +78,5 @@ export const allImages = {
   FD: FD,
   SIP: SIP,
   RD: RD,
+  Calender: Calender,
 };

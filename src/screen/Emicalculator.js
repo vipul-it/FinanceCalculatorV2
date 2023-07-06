@@ -59,10 +59,10 @@ const Emicalculator = () => {
     setLoanAmountPercentage(0);
     setTotalInterestPercentage(0);
   };
-
+  
   const calculateLoan = () => {
-    // Hide the keyboard
-    Keyboard.dismiss();
+  
+    
 
     const loanAmount = parseFloat(amount);
     const loanInterest = parseFloat(interest) / 100;
@@ -98,9 +98,20 @@ const Emicalculator = () => {
     setTotalPayment(totalPayment.toFixed(2));
     setLoanAmountPercentage(loanAmountPercentage.toFixed(2));
     setTotalInterestPercentage(totalInterestPercentage.toFixed(2));
+
+    // Hide the keyboard
+    Keyboard.dismiss();
   };
 
   const handleCalculateButton = () => {
+      // Validate input values
+      if (!amount || !interest || !tenure) {
+        Alert.alert(
+          'Validation Error',
+          'Please enter empty fields.',
+        );
+        return;
+      }
     calculateLoan();
     insertData();
   };
@@ -255,7 +266,7 @@ const Emicalculator = () => {
               </View>
               <SubHeading name="Loan Tenure" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-12">
                   <TextInput
                     className="w-full text-blackC"
                     value={tenure}
@@ -264,9 +275,9 @@ const Emicalculator = () => {
                     keyboardType="numeric"
                   />
                   <View className="flex-row">
-                    <Text className="text-blackC">Year</Text>
-                    <Text className="text-grayC">/</Text>
-                    <Text className="text-grayC">Months</Text>
+                  <Text className="text-blackC">Years</Text>
+                    {/* <Text className="text-grayC">/</Text>
+                    <Text className="text-grayC">Months</Text> */}
                   </View>
                 </View>
               </KeyboardAwareScrollView>
@@ -299,7 +310,7 @@ const Emicalculator = () => {
               </View>
               <SubHeading name="Loan Tenure" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-12">
                   <TextInput
                     className="w-full text-blackC"
                     value={tenure}
@@ -308,9 +319,9 @@ const Emicalculator = () => {
                     keyboardType="numeric"
                   />
                   <View className="flex-row">
-                    <Text className="text-blackC">Year</Text>
-                    <Text className="text-grayC">/</Text>
-                    <Text className="text-grayC">Months</Text>
+                  <Text className="text-blackC">Years</Text>
+                    {/* <Text className="text-grayC">/</Text>
+                    <Text className="text-grayC">Months</Text> */}
                   </View>
                 </View>
               </KeyboardAwareScrollView>
@@ -343,7 +354,7 @@ const Emicalculator = () => {
               </View>
               <SubHeading name="Loan Tenure" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-12">
                   <TextInput
                     className="w-full text-blackC"
                     value={tenure}
@@ -351,10 +362,10 @@ const Emicalculator = () => {
                     placeholder="eg. 5"
                     keyboardType="numeric"
                   />
-                  <View className="flex-row">
-                    <Text className="text-blackC">Year</Text>
-                    <Text className="text-grayC">/</Text>
-                    <Text className="text-grayC">Months</Text>
+                  <View className="">
+                    <Text className="text-blackC">Years</Text>
+                    {/* <Text className="text-grayC">/</Text>
+                    <Text className="text-grayC">Months</Text> */}
                   </View>
                 </View>
               </KeyboardAwareScrollView>
@@ -387,7 +398,7 @@ const Emicalculator = () => {
               </View>
               <SubHeading name="Loan Tenure" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-12">
                   <TextInput
                     className="w-full text-blackC"
                     value={tenure}
@@ -396,9 +407,9 @@ const Emicalculator = () => {
                     keyboardType="numeric"
                   />
                   <View className="flex-row">
-                    <Text className="text-blackC">Year</Text>
-                    <Text className="text-grayC">/</Text>
-                    <Text className="text-grayC">Months</Text>
+                    <Text className="text-blackC">Years</Text>
+                    {/* <Text className="text-grayC">/</Text>
+                    <Text className="text-grayC">Months</Text> */}
                   </View>
                 </View>
               </KeyboardAwareScrollView>
@@ -431,7 +442,7 @@ const Emicalculator = () => {
               </View>
               <SubHeading name="Loan Tenure" />
               <KeyboardAwareScrollView>
-                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-24">
+                <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5 pr-12">
                   <TextInput
                     className="w-full text-blackC"
                     value={tenure}
@@ -440,9 +451,9 @@ const Emicalculator = () => {
                     keyboardType="numeric"
                   />
                   <View className="flex-row">
-                    <Text className="text-blackC">Year</Text>
-                    <Text className="text-grayC">/</Text>
-                    <Text className="text-grayC">Months</Text>
+                    <Text className="text-blackC">Years</Text>
+                    {/* <Text className="text-grayC">/</Text>
+                    <Text className="text-grayC">Months</Text> */}
                   </View>
                 </View>
               </KeyboardAwareScrollView>
