@@ -105,18 +105,7 @@ const Emicalculator = () => {
     Keyboard.dismiss();
   };
 
-  const handleCalculateButton = () => {
-      // Validate input values
-      if (!amount || !interest || !tenure) {
-        Alert.alert(
-          'Validation Error',
-          'Please enter empty fields.',
-        );
-        return;
-      }
-    calculateLoan();
-    insertData();
-  };
+
 
   const currentDate = moment();
   const formattedTime = currentDate.format('hh:mm a');
@@ -171,6 +160,19 @@ const Emicalculator = () => {
       );
     });
   };
+
+  const handleCalculateButton = () => {
+    // Validate input values
+    if (!amount || !interest || !tenure) {
+      Alert.alert(
+        'Validation Error',
+        'Please enter empty fields.',
+      );
+      return;
+    }
+  calculateLoan();
+  insertData();
+};
 
   return (
     <>
@@ -245,7 +247,7 @@ const Emicalculator = () => {
               <KeyboardAwareScrollView>
                 <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                   <TextInput
-                    className="w-full text-blackC"
+                    className="w-full text-blackC"                   
                     value={amount}
                     onChangeText={text => setAmount(text)}
                     placeholder="eg. 100000"
