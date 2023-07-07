@@ -97,8 +97,6 @@ const InterestCalculator = () => {
     setDInterest('');
     setDCompoundInterval('');
     setDPrincipleAmount('');
-    setSelectedDateFrom('');
-    setSelectedDateTo('');
     setDTotalInterest('');
     setDTotalAmount('');
   };
