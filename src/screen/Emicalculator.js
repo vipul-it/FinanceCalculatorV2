@@ -149,14 +149,14 @@ const Emicalculator = () => {
           loanAmountPercentage,
           totalInterestPercentage,
         ],
-        (_, result) => {
-          if (result.insertId !== undefined) {
-            Alert.alert('Success', 'Data inserted successfully!');
-            fetchData();
-          } else {
-            Alert.alert('Error', 'Failed to insert data!');
-          }
-        },
+        // (_, result) => {
+        //   if (result.insertId !== undefined) {
+        //     Alert.alert('Success', 'Data inserted successfully!');
+        //     fetchData();
+        //   } else {
+        //     Alert.alert('Error', 'Failed to insert data!');
+        //   }
+        // },
       );
     });
   };
