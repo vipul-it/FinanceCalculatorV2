@@ -23,42 +23,42 @@ const Detilsshowemi = () => {
   const data = [
     {
       id: 1,
-      month: 1,
+      years: 1,
       pricipal: 3288,
       interest: 83,
       Balance: 16701,
     },
     {
       id: 2,
-      month: 2,
+      years: 2,
       pricipal: 3288,
       interest: 83,
       Balance: 16701,
     },
     {
       id: 3,
-      month: 3,
+      years: 3,
       pricipal: 3288,
       interest: 83,
       Balance: 16701,
     },
     {
       id: 4,
-      month: 4,
+      years: 4,
       pricipal: 3288,
       interest: 83,
       Balance: 16701,
     },
     {
       id: 5,
-      month: 5,
+      years: 5,
       pricipal: 3288,
       interest: 83,
       Balance: 16701,
     },
     {
       id: 6,
-      month: 6,
+      years: 6,
       pricipal: 3288,
       interest: 83,
       Balance: 16701,
@@ -68,7 +68,7 @@ const Detilsshowemi = () => {
   const renderRow = ({item}) => (
     <View className="flex-row justify-between px-3  py-2 border-t-[1px] border-primaryHeading ">
       <View>
-        <Text className="text-gray-700">{item.month}</Text>
+        <Text className="text-gray-700">{item.years}</Text>
       </View>
       <View>
         <Text className="text-gray-700">{item.pricipal}</Text>
@@ -139,11 +139,11 @@ const Detilsshowemi = () => {
 
         <Text className="my-2"></Text>
 
-        <View className="border-[1px] border-primaryHeading rounded-lg ">
-          {/* Table Header */}
+        {/* <View className="border-[1px] border-primaryHeading rounded-lg ">
+        
           <View className="flex-row bg-primaryDark justify-between px-2 py-2 rounded-t-lg ">
             <View className="">
-              <Text className="text-whiteC">Month</Text>
+              <Text className="text-whiteC">Years</Text>
             </View>
             <View className="">
               <Text className="text-whiteC">Principal</Text>
@@ -156,13 +156,13 @@ const Detilsshowemi = () => {
             </View>
           </View>
 
-          {/* Table Rows */}
+          
           <FlatList
             data={data}
             renderItem={renderRow}
             keyExtractor={item => item.id.toString()}
           />
-        </View>
+        </View> */}
       </View>
     </View>
   );
