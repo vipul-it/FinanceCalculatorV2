@@ -64,7 +64,7 @@ const InterestCalculator = () => {
   const [loanAmountPercentage, setLoanAmountPercentage] = useState('');
   const [totalInterestPercentage, setTotalInterestPercentage] = useState('');
 
-  
+
 
   const [value, setValue] = useState(0);
   const renderItem = item => {
@@ -98,6 +98,7 @@ const InterestCalculator = () => {
       id: 2,
     },
   ];
+  console.log(value);
 
   const handleCalculateButton = () => {
     // Validate input values
@@ -180,7 +181,7 @@ const InterestCalculator = () => {
                   <Text className="text-blackC">&#8377;</Text>
                 </View>
               </KeyboardAwareScrollView>
-              <SubHeading name="Intrest Rate" />
+              <SubHeading name="Interest Rate" />
               <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                 <TextInput
                   className="w-full text-blackC"
@@ -206,6 +207,7 @@ const InterestCalculator = () => {
                   renderItem={renderItem}
                 />
               </View>
+              
 
               <SubHeading name="Time Period" />
               <KeyboardAwareScrollView>

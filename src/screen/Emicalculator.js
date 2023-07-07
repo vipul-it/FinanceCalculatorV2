@@ -552,7 +552,7 @@ const Emicalculator = () => {
                   srcPath={allImages.Calculate}
                 />
 
-                <CalculateButton name="Share" srcPath={allImages.Share} />
+                {/* <CalculateButton name="Share" srcPath={allImages.Share} /> */}
               </View>
             </View>
           </View>
