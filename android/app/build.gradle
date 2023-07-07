@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.financecalculator"
+    namespace "com.fin.emi.disccal"
     defaultConfig {
-        applicationId "com.financecalculator"
+        applicationId "com.fin.emi.disccal"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

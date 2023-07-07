@@ -1,4 +1,4 @@
-package com.financecalculator;
+package com.fin.emi.disccal;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
