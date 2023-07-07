@@ -8,7 +8,7 @@ const CalculateButton = ({name, srcPath, onPress}) => {
         <View
           style={{
             flexDirection: 'row',
-            paddingHorizontal: 12,
+            paddingHorizontal: 14,
             backgroundColor: '#1B39FE',
             alignItems: 'center',
             borderRadius: 10,
@@ -21,7 +21,8 @@ const CalculateButton = ({name, srcPath, onPress}) => {
               tintColor: '#fff',
               width: 10,
               height: 14,
-              marginRight: 4,
+              marginRight: 5,
+              
             }}
           />
           <Text style={{color: '#fff', fontSize: 15}}>{name}</Text>

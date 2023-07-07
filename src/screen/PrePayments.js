@@ -150,18 +150,18 @@ const PrePayments = () => {
   };
   const handleCalculateButtonPRI = () => {
     // Validate input values
-    // if (!amount || !interest || !tenure) {
-    //   Alert.alert('Validation Error', 'Please enter empty fields.');
-    //   return;
-    // }
+    if (!amount || !interest || !currentEmi || !prePayment) {
+      Alert.alert('Validation Error', 'Please enter empty fields.');
+      return;
+    }
     calculatePrePayment();
   };
   const handleCalculateButtonROI = () => {
     // Validate input values
-    // if (!amount || !interest || !tenure) {
-    //   Alert.alert('Validation Error', 'Please enter empty fields.');
-    //   return;
-    // }
+    if (!amount || !interest || !currentEmi || !revisedInterest) {
+      Alert.alert('Validation Error', 'Please enter empty fields.');
+      return;
+    }
     calculatePrePaymentROI();
   };
   
@@ -299,7 +299,7 @@ const PrePayments = () => {
                 <View className="flex-row mr-2 justify-evenly">
                   <View>
                     <Text className="text-whiteC text-lg text-center">
-                      1New EMI
+                      New EMI
                     </Text>
                     <Text className="text-primaryDark text-lg text-center">
                       &#8377; {newEmi}
@@ -415,7 +415,7 @@ const PrePayments = () => {
                 <View className="flex-row justify-evenly my-12">
                   <CalculateButton
                     name="Calculate"
-                    onPress={calculatePrePaymentROI}
+                    onPress={handleCalculateButtonROI}
                     srcPath={allImages.Calculate}
                   />
                   <CalculateButton
@@ -433,7 +433,7 @@ const PrePayments = () => {
                 <View className="flex-row mr-2 justify-evenly">
                   <View>
                     <Text className="text-whiteC text-lg text-center">
-                      2New EMI
+                      New EMI
                     </Text>
                     <Text className="text-primaryDark text-lg text-center">
                       &#8377; {newEmi}

@@ -64,6 +64,8 @@ const InterestCalculator = () => {
   const [loanAmountPercentage, setLoanAmountPercentage] = useState('');
   const [totalInterestPercentage, setTotalInterestPercentage] = useState('');
 
+  
+
   const [value, setValue] = useState(0);
   const renderItem = item => {
     return (
