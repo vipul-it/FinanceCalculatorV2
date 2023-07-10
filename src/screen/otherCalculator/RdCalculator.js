@@ -17,12 +17,15 @@ import {allImages} from '../../utils/images';
 
 const RdCalculator = () => {
   const navigation = useNavigation();
-  const [amount, setAmount] = useState('');
-  const [interestRate, setInterestRate] = useState('');
+
+  const [monthlyAmount, setMonthlyAmount] = useState('');
+  const [interest, setInterest] = useState('');
   const [timePeriod, setTimePeriod] = useState('');
   const [maturityAmount, setMaturityAmount] = useState('');
-  const [totalAmount, setTotalAmount] = useState('');
+  const [totalInterest, setTotalInterest] = useState('');
   const [totalInvestment, setTotalInvestment] = useState('');
+
+  
 
   //   Reset data
   const resetData = () => {
@@ -40,18 +43,19 @@ const RdCalculator = () => {
     calculateRD();
   };
   const calculateRD = () => {
-    const principal = parseFloat(amount);
-    const rate = parseFloat(interestRate);
-    const time = parseFloat(timePeriod);
+   
 
-    const interest = (principal * rate * time) / (12 * 100);
-    const maturity = principal + interest;
-    const total = principal * time;
 
-    setMaturityAmount(maturity.toFixed(2));
-    setTotalAmount(total.toFixed(2));
-    setTotalInvestment(principal.toFixed(2));
+    const principal = parseFloat(monthlyAmount) * parseFloat(timePeriod);
+    const rate = parseFloat(interest) / 100 / 12;
+    const maturityAmount = principal * (1 + rate) * timePeriod + principal;
+    const totalInterest = maturityAmount - principal;
+    const totalInvestment = parseFloat(monthlyAmount) * parseFloat(timePeriod);
+    setMaturityAmount(maturityAmount.toFixed(2));
+    setTotalInterest(totalInterest.toFixed(2));
+    setTotalInvestment(totalInvestment.toFixed(2));
   };
+
   // Calculation end
 
   return (
@@ -69,8 +73,8 @@ const RdCalculator = () => {
             <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
               <TextInput
                 className="w-full text-blackC"
-                value={amount}
-                onChangeText={setAmount}
+                value={monthlyAmount}
+                onChangeText={setMonthlyAmount}
                 placeholder="eg. 100000"
                 keyboardType="numeric"
               />
@@ -81,8 +85,8 @@ const RdCalculator = () => {
           <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
             <TextInput
               className="w-full text-blackC"
-              value={interestRate}
-              onChangeText={setInterestRate}
+              value={interest}
+              onChangeText={setInterest}
               placeholder="eg. 8"
               keyboardType="numeric"
             />
@@ -92,7 +96,7 @@ const RdCalculator = () => {
           <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
             <TextInput
               className="w-[25%] text-blackC"
-              alue={timePeriod}
+              value={timePeriod}
               onChangeText={setTimePeriod}
               placeholder="e.g. 5"
               keyboardType="numeric"
@@ -121,7 +125,6 @@ const RdCalculator = () => {
               onPress={resetData}
               srcPath={allImages.Reset}
             />
-            
           </View>
         </View>
 
@@ -140,7 +143,7 @@ const RdCalculator = () => {
           <View className="flex-row justify-between mx-10 items-center">
             <Text className="text-whiteC pt-2 text-lg ">Total Interest</Text>
             <Text className="text-primaryHeading text-lg ">
-              &#8377; {totalAmount}
+              &#8377; {totalInterest}
             </Text>
           </View>
           <View className="flex-row justify-between mx-10 items-center">
