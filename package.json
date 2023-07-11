@@ -9,11 +9,9 @@
     "start": "react-native start",
     "test": "jest",
     "build": "cd android && ./gradlew clean && ./gradlew assembleRelease",
-    "bundle":"npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/  assets/index.android.bundle  --assets-dest android/app/src/main/res/",
-    "release-apk":"npm run bundle && cd android && ./gradlew assembleRelease",
-   
-    "release-bundle":"npm run bundle && cd android && ./gradlew bundleRelease"
-    
+    "bundle": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/  assets/index.android.bundle  --assets-dest android/app/src/main/res/",
+    "release-apk": "npm run bundle && cd android && ./gradlew assembleRelease",
+    "release-bundle": "npm run bundle && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
@@ -35,6 +33,7 @@
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-svg": "^13.9.0",
     "react-native-svg-web": "^1.0.9",
+    "react-native-view-shot": "^3.7.0",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
