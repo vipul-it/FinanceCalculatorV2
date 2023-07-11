@@ -1,17 +1,12 @@
 import {
   View,
   Text,
-  Image,
   SafeAreaView,
   TextInput,
   ScrollView,
   Alert,
-  FlatList,
-  TouchableOpacity,
-  Keyboard,
-  StyleSheet,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -41,8 +36,6 @@ const CompareLoan = () => {
   const [emiDiff, setEmiDiff] = useState('');
   const [interestPayDiff, setInterestPayDiff] = useState('');
   const [totalPayDiff, setTotalPayDiff] = useState('');
-
-
 
   const resetData = () => {
     setPrincipalAmount1('');
@@ -104,7 +97,16 @@ const CompareLoan = () => {
 
   const handleCalculateButton = () => {
     // Validate input values
-    if (!principalAmount1 || !interest1 || !principalAmount2 || !interest2 || !years1 || !months1 || !years2 || !months2) {
+    if (
+      !principalAmount1 ||
+      !interest1 ||
+      !principalAmount2 ||
+      !interest2 ||
+      !years1 ||
+      !months1 ||
+      !years2 ||
+      !months2
+    ) {
       Alert.alert('Validation Error', 'Please enter empty fields.');
       return;
     }
