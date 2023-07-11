@@ -26,12 +26,12 @@ const CompareLoan = () => {
 
   const [principalAmount1, setPrincipalAmount1] = useState('');
   const [interest1, setInterest1] = useState('');
-  const [years1, setYears1] = useState('');
-  const [months1, setMonths1] = useState('');
+  const [years1, setYears1] = useState('1');
+  const [months1, setMonths1] = useState('0');
   const [principalAmount2, setPrincipalAmount2] = useState('');
   const [interest2, setInterest2] = useState('');
-  const [years2, setYears2] = useState('');
-  const [months2, setMonths2] = useState('');
+  const [years2, setYears2] = useState('1');
+  const [months2, setMonths2] = useState('0');
   const [emi1, setEMI1] = useState('');
   const [emi2, setEMI2] = useState('');
   const [interestPayable1, setInterestPayable1] = useState('');
@@ -42,29 +42,24 @@ const CompareLoan = () => {
   const [interestPayDiff, setInterestPayDiff] = useState('');
   const [totalPayDiff, setTotalPayDiff] = useState('');
 
-  // amount interest currentEmi revisedIntrest
 
-  const [value, setValue] = useState(0);
-  const renderItem = item => {
-    return (
-      <View>
-        <Text className="my-4 px-3">{item.label}</Text>
-        {item.value === value}
-      </View>
-    );
-  };
 
   const resetData = () => {
-    setAmount('');
-    setInterest('');
-    setCurrentEmi('');
-    setRevisedInterest('');
-    setNewEmi('');
-    setOldEmi('');
-    setNewTenure('');
-    setOldTenure('');
-    setEmiDifference('');
-    setTenureDifference('');
+    setPrincipalAmount1('');
+    setPrincipalAmount2('');
+    setInterest1('');
+    setInterest2('');
+    setYears1('1');
+    setYears2('1');
+    setMonths1('0');
+    setMonths2('0');
+    setEMI1('');
+    setEMI2('');
+    setInterestPayable1('');
+    setTotalPayable2('');
+    setEmiDiff('');
+    setInterestPayDiff('');
+    setTotalPayDiff('');
   };
 
   const calculateLoanComparison = () => {
@@ -109,10 +104,10 @@ const CompareLoan = () => {
 
   const handleCalculateButton = () => {
     // Validate input values
-    // if (!amount || !interest || !currentEmi || !prePayment) {
-    //   Alert.alert('Validation Error', 'Please enter empty fields.');
-    //   return;
-    // }
+    if (!principalAmount1 || !interest1 || !principalAmount2 || !interest2 || !years1 || !months1 || !years2 || !months2) {
+      Alert.alert('Validation Error', 'Please enter empty fields.');
+      return;
+    }
     calculateLoanComparison();
   };
 
@@ -208,8 +203,8 @@ const CompareLoan = () => {
                     <View className=" w-[49%] my-2 border-[1.5px] border-inputBorderColor rounded-lg flex-row items-center justify-between px-5">
                       <TextInput
                         className="w-full text-blackC"
-                        value={months1}
-                        onChangeText={setMonths1}
+                        value={years2}
+                        onChangeText={setYears2}
                         placeholder="eg. 5"
                         keyboardType="numeric"
                       />
@@ -220,8 +215,8 @@ const CompareLoan = () => {
                     <View className=" my-2 border-[1.5px] border-inputBorderColor rounded-lg w-[49%]  flex-row items-center justify-between px-5">
                       <TextInput
                         className="w-full text-blackC"
-                        value={years2}
-                        onChangeText={setYears2}
+                        value={months1}
+                        onChangeText={setMonths1}
                         placeholder="eg. 5"
                         keyboardType="numeric"
                       />
